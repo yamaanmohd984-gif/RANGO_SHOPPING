@@ -2,46 +2,266 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ owner.name }} - Handmade Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craftora International</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; }
-        header { background-color: #232f3e; color: white; padding: 20px; text-align: center; }
-        .container { width: 85%; margin: auto; padding: 20px; }
-        .contact-card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 30px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .product-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
-        .product-card img { max-width: 100%; height: 200px; object-fit: cover; border-radius: 4px; }
-        .price { color: #b12704; font-size: 18px; font-weight: bold; margin: 10px 0; }
-        .btn-buy { display: inline-block; background-color: #ffd814; color: #111; padding: 10px 20px; text-decoration: none; border-radius: 20px; font-weight: bold; }
-        .btn-buy:hover { background-color: #f7ca00; }
+        /* 🎨 Core Variables & Reset */
+        :root {
+            --primary-dark: #130F0D;
+            --accent-terracotta: #A0522D;
+            --bg-light: #FBFBFA;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg-light); 
+            color: var(--primary-dark);
+        }
+
+        /* 🎪 1. AUTOMATIC TOP IMAGE ADS SLIDER (Had se zyada premium!) */
+        .slider-wrapper {
+            width: 100%;
+            height: 180px; /* Photo ke liye height thodi badi ki hai */
+            background-color: #111;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .slider-container {
+            display: flex;
+            width: 1000%; /* 10 Ads ke liye space */
+            height: 100%;
+            animation: autoScrollAds 35s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+        }
+
+        .ad-slide {
+            width: 10%; /* Har ad poori width lega */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            padding: 0 20px;
+            box-sizing: border-box;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Photo ke upar text saaf dikhne ke liye dark parda */
+        .ad-slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+        
+        .ad-slide span {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 🔄 10 Ads Auto-Scroll Animation (Har Slide 3.5 Second Rukegi) */
+        @keyframes autoScrollAds {
+            0%, 9% { transform: translateX(0%); }
+            10%, 19% { transform: translateX(-10%); }
+            20%, 29% { transform: translateX(-20%); }
+            30%, 39% { transform: translateX(-30%); }
+            40%, 49% { transform: translateX(-40%); }
+            50%, 59% { transform: translateX(-50%); }
+            60%, 69% { transform: translateX(-60%); }
+            70%, 79% { transform: translateX(-70%); }
+            80%, 89% { transform: translateX(-80%); }
+            90%, 99% { transform: translateX(-90%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* 👕 Urban Minimalist Header */
+        header { 
+            background: #ffffff; 
+            padding: 25px 15px; 
+            text-align: center; 
+            border-bottom: 1px solid #eaeaea;
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 32px; 
+            letter-spacing: 3px; 
+            font-weight: 800; 
+            text-transform: uppercase;
+        }
+        header p { 
+            margin: 6px 0 0 0; 
+            font-size: 14px; 
+            opacity: 0.7; 
+            letter-spacing: 1px;
+        }
+
+        /* 🛒 Sliding Ticker Bar (Chalta-Firti Cart Bar) */
+        .moving-cart-container { 
+            width: 100%; 
+            overflow: hidden; 
+            background: #fff0b3; 
+            padding: 8px 0; 
+            border-bottom: 1px solid #ffe066;
+        }
+        .moving-cart { 
+            font-size: 14px; 
+            white-space: nowrap; 
+            display: inline-block; 
+            animation: walkCart 15s linear infinite; 
+            font-weight: 600; 
+            color: #5c4300; 
+        }
+        @keyframes walkCart {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+
+        /* 📦 Main Container */
+        .container { 
+            width: 92%; 
+            max-width: 1200px; 
+            margin: auto; 
+            padding: 20px 0; 
+        }
+
+        /* 🎯 Section Heading */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            margin: 30px 0 20px 0;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-dark);
+            margin: 6px auto 0 auto;
+        }
+        
+        /* 🛍️ Responsive Mobile Product Grid */
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+        }
+        
+        @media (min-width: 768px) {
+            .product-grid { grid-template-columns: repeat(4, 1fr); gap: 25px; }
+            header h1 { font-size: 40px; }
+            .container { width: 85%; }
+        }
+        
+        /* 🧥 Modern Clean Product Cards */
+        .product-card { 
+            background: #ffffff; 
+            padding: 12px; 
+            border-radius: 4px; 
+            box-shadow: var(--card-shadow); 
+            text-align: center; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #f0f0f0;
+            transition: transform 0.2s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .product-card img { 
+            width: 100%; 
+            height: 160px; 
+            object-fit: cover; 
+            border-radius: 2px;
+            background-color: #f7f7f7;
+        }
+        @media (min-width: 768px) { .product-card img { height: 220px; } }
+        
+        .product-card h3 { 
+            font-size: 13px; 
+            margin: 10px 0 4px 0; 
+            color: var(--primary-dark); 
+            font-weight: 600;
+            height: 36px; 
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .category { 
+            font-size: 11px; 
+            color: #777; 
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        
+        .price { 
+            color: var(--primary-dark); 
+            font-size: 15px; 
+            font-weight: 700; 
+            margin-bottom: 10px;
+        }
+        
+        .btn-buy { 
+            display: block; 
+            background-color: var(--primary-dark); 
+            color: #ffffff; 
+            padding: 8px 5px; 
+            text-decoration: none; 
+            border-radius: 2px; 
+            font-weight: 600; 
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to {{ owner.name }}'s Collection</h1>
-        <p>Pure Handmade Jute & Cloth Items</p>
-    </header>
-
-    <div class="container">
-        <div class="contact-card">
-            <h2>About the Maker</h2>
-            <p>{{ owner.about }}</p>
-            <p><strong>📧 Email:</strong> {{ owner.email }} | <strong>📞 Contact:</strong> {{ owner.phone }}</p>
-        </div>
-        <h2>Our Products</h2>
-        <div class="product-grid">
-            {% for product in products %}
-            <div class="product-card">
-                <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
-                <h3>{{ product.name }}</h3>
-                <p style="color: gray;">Category: {{ product.category }}</p>
-                <div class="price">{{ product.price }}</div>
-                <a href="{{ product.buy_link }}" target="_blank" class="btn-buy">Buy on Amazon/Flipkart</a>
-            </div>
-            {% endfor %}
+    <!-- 🎪 10 AUTOMATIC SCROLLING IMAGE ADS BAR (Internet photos connected!) -->
+    <div class="slider-wrapper">
+        <div class="slider-container">
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/handmade-colourful-bamboo-basket-for-sale-in-pune-india-stylish-interior-item-eco-gm2247110983-661029438');"><span>🎨 Custom Sizes & Creative Fancy Designs Available 🎨</span></div>
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/hardwood-floor-with-jute-doormat-shoes-and-flower-pot-and-seagrass-laundry-basket-by-gm1311958067-400902688');"><span>🔥 Special Jute Workshop Coming Soon! Register Now 🧺</span></div>
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/cacao-nibs-in-a-basket-gm1156610275-315280868');"><span>✨ 100% Eco-Friendly Pure Handmade Home Decor ✨</span></div>
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/vector/jute-icons-set-cartoon-vector-canvas-hessian-gm2191849080-610154324');"><span>📦 Free Shipping Nationwide On Orders Above ₹999 📦</span></div>
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/mango-fruits-in-wooden-basket-with-leaf-after-harvest-from-farm-mango-fruits-with-gm1320601259-407106501');"><span>🌟 Premium Quality Boho Art Wall Hanging Collection 🌟</span></div>
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/macrame-cotton-and-hemp-ropes-in-skeins-gm1160541088-317688074');"><span>💎 Call To Order Direct: +91 8630850116, 7037380116 💎</span></div>
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/zero-waste-concept-in-home-kitchen-gm1203026518-345609501');"><span>🛍️ Best Sellers - Premium Leather Handle Baskets 🛍️</span></div>
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/handmade-colourful-bamboo-basket-for-sale-in-pune-india-stylish-interior-item-eco-gm2247110983-661029438');"><span>🌿 Sustainable Art For Earth-Loving Modern Homes 🌿</span></div>
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/jute-rope-bag-basket-natural-jute-coaster-cozy-crocheted-basket-of-jute-eco-friendly-gm1441180149-480949708');"><span>💯 Trusted Craftsmanship Built With Global Standards 💯</span></div>
+            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/a-brown-basket-woven-from-natural-materials-gm1257784406-368725337');"><span>✨ Follow Us On Instagram @CRAFT_EMPORIUM ✨</span></div>
         </div>
     </div>
 
-</body>
-</html>
+    <!-- 👕 Minimalist Header -->
+    <header>
+        <h1>Craftora International</h1>
+        <p>Global Luxury Handmade Creativity For Modern Homes</p>
+    </header>
+
+    <!-- 🛒 Chalti-Firti Cart Bar -->
+    <div class="moving-cart-container">
+        <div class="moving-cart">运行 🛒 Welcome to Craftora International! Check Out Premium Jute Coasters, Royal Baskets 🧺 & Royal Home Decor Art... 🛍️</div>
+    </div>
+
+    <div class="container">
+        <!-- Products Section -->
