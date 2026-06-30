@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Brands - {{ site_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="logo-box">
+            <div class="logo">{{ site_name }}</div>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/category">Collection</a>
+        </nav>
+    </header>
+
+    <section class="category-header">
+        <h1>The Entire 20 Luxury Brand Lineup</h1>
+        <p>Explore elite footwear pieces. Click buy to view varieties on official brand sites.</p>
+    </section>
+
+    <!-- प्रोडक्ट ग्रिड (बिना किसी इमेज के) -->
+    <section class="products-section" style="padding-top: 20px;">
+        <div class="product-grid">
+            {% for shoe in shoes %}
+            <div class="product-card">
+                <div class="brand-tag">{{ shoe.brand }}</div>
+                <div class="product-text-details">
+                    <h3>{{ shoe.name }}</h3>
+                    <p class="collection">Tag: {{ shoe.cat }}</p>
+                    <p class="price">{{ shoe.price }}</p>
+                </div>
+                <a href="{{ shoe.url }}" target="_blank" class="btn-add-link">BUY ON OFFICIAL SITE</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <p>Crafted by Yamaan | Contact: <a href="mailto:yamaanm291@gmail.com">yamaanm291@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>

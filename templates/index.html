@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site_name }} - Premium Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- हेडर (ब्रांड नाम के पीछे बैकग्राउंड इमेज CSS से संभाली गई है) -->
+    <header>
+        <div class="logo-box">
+            <div class="logo">{{ site_name }}</div>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/category">Collection (20 Brands)</a>
+        </nav>
+    </header>
+
+    <!-- हीरो सेक्शन (इसके पीछे बड़ी एस्थेटिक शू इमेज सेट है) -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Time. Perfected.</h1>
+            <p>Timeless luxury footwear. Precision engineering. Built for those who value absolute legacy.</p>
+            <div class="hero-buttons">
+                <a href="/category" class="btn btn-primary">EXPLORE ALL BRANDS</a>
+            </div>
+            <div class="trusted">
+                <p>⭐ Trusted by 15,000+ Luxury Collectors</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8 कैटेगरी बटन्स -->
+    <section class="category-buttons-section">
+        <h3>SELECT YOUR STYLE</h3>
+        <div class="category-btn-grid">
+            {% for cat in categories %}
+            <a href="/category" class="cat-btn">👟 {{ cat }}</a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-item">💎 SWISS CRAFTSMANSHIP</div>
+        <div class="feature-item">☁️ PREMIUM ERGONOMIC SOLE</div>
+        <div class="feature-item">🛡️ 2 YEAR WARRANTY</div>
+        <div class="feature-item">📦 FREE INSURED SHIPPING</div>
+    </section>
+
+    <!-- प्रोडक्ट सेक्शन (बिना किसी इमेज के) -->
+    <section class="products-section">
+        <h2>OUR SIGNATURE TIMEPIECES FOR FEET</h2>
+        <p class="section-subtitle">A curated selection from world's top fashion houses</p>
+        
+        <div class="product-grid">
+            {% for shoe in shoes %}
+            <div class="product-card">
+                <div class="brand-tag">{{ shoe.brand }}</div>
+                <div class="product-text-details">
+                    <h3>{{ shoe.name }}</h3>
+                    <p class="collection">Category: {{ shoe.cat }}</p>
+                    <p class="price">{{ shoe.price }}</p>
+                </div>
+                <!-- इस बटन पर क्लिक करते ही ब्रांड की वैरायटी वाली साइट खुलेगी -->
+                <a href="{{ shoe.url }}" target="_blank" class="btn-add-link">BUY ON OFFICIAL SITE</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>{{ site_name }}</h3>
+            <p>Crafted with perfection by <strong>Yamaan</strong></p>
+            <p>Contact Owner: <a href="mailto:yamaanm291@gmail.com">yamaanm291@gmail.com</a></p>
+            <p class="copy">&copy; 2026 {{ site_name }}. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
