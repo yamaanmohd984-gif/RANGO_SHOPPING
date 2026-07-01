@@ -6,6 +6,7 @@
 }
 
 body {
+    background-image: url("https://plus.unsplash.com/premium_photo-1685868556097-641c237f3fa5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D");
     background-color: #0a0a0a;
     color: #ffffff;
     line-height: 1.6;
@@ -22,7 +23,7 @@ header {
 
 .logo-box {
     padding: 10px 20px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://unsplash.com');
+    background-image: linear-gradient, url("https://plus.unsplash.com/premium_photo-1685868556097-641c237f3fa5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D");
     background-size: cover;
     background-position: center;
     border-radius: 4px;
@@ -57,7 +58,7 @@ header nav a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image: url('https://unsplash.com');
+    background-image: url('https://images.unsplash.com/photo-1588694865942-6037fd93efc0?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fHNob2VzJTIwYWRzJTIwaW1hZ2VzfGVufDB8fDB8fHww');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
