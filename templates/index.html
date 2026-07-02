@@ -12,7 +12,9 @@
     <!-- हेडर (ब्रांड नाम के पीछे बैकग्राउंड इमेज CSS से संभाली गई है) -->
     <header>
         <div class="logo-box">
-            <div class="logo">{{ site_name }}</div>
+            <a href="/">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Rango Shopping Logo" style="height: 60px; object-fit: contain;">
+            </a>
         </div>
         <nav>
             <a href="/">Home</a>
