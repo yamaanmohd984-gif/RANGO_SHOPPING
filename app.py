@@ -5,7 +5,7 @@ import sqlite3
 app = Flask(__name__)
 
 
-DATABASE = "database/rango.db"
+DATABASE = "rango.db"
 
 
 
