@@ -394,6 +394,12 @@ def kids_sunglasses():
     return render_template("kids-sunglasses.html")
 
 
+
+
+@app.route('/robots.txt')
+def robots_txt():
+    return "User-agent: *\nAllow: /"
+
 # Terms
 
 @app.route("/terms")
