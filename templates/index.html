@@ -1,92 +1,627 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="google-site-verification" content="LgM7XwMlO6DVPua_OtQUU1BwNMR4y5cI8YiZZHfDs8" />
-    <meta name="verify-admitad" content="f92a2bf44e" />
-    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo.jpeg') }}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site_name }} - Premium Store</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <!-- हेडर -->
-    <header>
-        <div class="logo-box">
-            <a href="/">
-                <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Rango Shopping Logo" style="height: 60px; object-fit: contain;">
-            </a>
-        </div>
+{% block title %}
+Rango Shopping | Luxury Fashion
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="home">
+
+    <div class="home-content">
+
+        <h1>
+            Luxury Fashion
+        </h1>
+
+        <p>
+            Premium Brands • Elegant Style • Exclusive Collection
+        </p>
+
+        <a href="/men" class="homebtn">
+            Explore Collection
+        </a>
+       
         
-        <nav>
-            <a href="/">Home</a>
-            <a href="/category">Collection (20 Brands)</a>
-        </nav>
-    </header>
+    </div>
 
-</body>
-</html>
+</section>
+</header>
+        <div class="announcement-bar">
+    <span>
+        🔥 MID SEASON SALE • UP TO 70% OFF • FREE SHIPPING • PREMIUM BRANDS • LIMITED TIME OFFER 🔥
+    </span>
+</div>
 
-    <!-- हीरो सेक्शन (इसके पीछे बड़ी एस्थेटिक शू इमेज सेट है) -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Time. Perfected.</h1>
-            <p>Timeless luxury footwear. Precision engineering. Built for those who value absolute legacy.</p>
-            <div class="hero-buttons">
-                <a href="/category" class="btn btn-primary">EXPLORE ALL BRANDS</a>
-            </div>
-            <div class="trusted">
-                <p>⭐ Trusted by 15,000+ Luxury Collectors</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- 8 कैटेगरी बटन्स -->
-    <section class="category-buttons-section">
-        <h3>SELECT YOUR STYLE</h3>
-        <div class="category-btn-grid">
-            {% for cat in categories %}
-            <a href="/category" class="cat-btn">👟 {{ cat }}</a>
-            {% endfor %}
-        </div>
-    </section>
 
-    <section class="features">
-        <div class="feature-item">💎 SWISS CRAFTSMANSHIP</div>
-        <div class="feature-item">☁️ PREMIUM ERGONOMIC SOLE</div>
-        <div class="feature-item">🛡️ 2 YEAR WARRANTY</div>
-        <div class="feature-item">📦 FREE INSURED SHIPPING</div>
-    </section>
 
-    <!-- प्रोडक्ट सेक्शन (बिना किसी इमेज के) -->
-    <section class="products-section">
-        <h2>OUR SIGNATURE TIMEPIECES FOR FEET</h2>
-        <p class="section-subtitle">A curated selection from world's top fashion houses</p>
-        
-        <div class="product-grid">
-            {% for shoe in shoes %}
-            <div class="product-card">
-                <div class="brand-tag">{{ shoe.brand }}</div>
-                <div class="product-text-details">
-                    <h3>{{ shoe.name }}</h3>
-                </div>
-                <!-- इस बटन पर क्लिक करते ही ब्रांड की वैरायटी वाली साइट खुलेगी -->
-                <a href="{{ shoe.url }}" target="_blank" class="btn-add-link">BUY ON OFFICIAL SITE</a>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
 
-    <footer>
-        <div class="footer-content">
-            <h3>{{ site_name }}</h3>
-            <p>Crafted with perfection by <strong>Yamaan</strong></p>
-            <p>Contact Owner: <a href="mailto:yamaanm291@gmail.com">yamaanm291@gmail.com</a></p>
-            <p class="copy">&copy; 2026 {{ site_name }}. All Rights Reserved.</p>
-        </div>
-    </footer>
+<section>
 
-</body>
-</html>
+<div class="section-title">
+
+<h2>
+Welcome To <span>Rango Shopping</span>
+</h2>
+
+<p>
+Luxury fashion and premium lifestyle products.
+</p>
+
+</div>
+ 
+
+
+<section2 class="category-strip">
+
+    <a href="/men" class="strip-item">
+
+    <img src="https://i.pinimg.com/736x/e8/42/80/e8428035703379178bb353aab2873adc.jpg"alt="Men">
+
+    <div class="strip-content">
+        <h3>MEN</h3>
+        <p>Elevated everyday essentials.</p>
+        <span>SHOP MEN →</span>
+    </div>
+
+</a>
+
+    <a href="{{ url_for('women') }}" class="strip-item">
+
+    <img src="https://i.pinimg.com/736x/0d/fc/5f/0dfc5fbd03688b473fa5c1d29743a564.jpg" alt="Women">
+
+    <div class="strip-content">
+        <h3>WOMEN</h3>
+        <p>Luxury Style For Every You</p>
+        <span>SHOP WOMEN →</span>
+    </div>
+
+</a>
+
+<a href="{{ url_for('kids') }}" class="strip-item">
+
+    <img src="https://i.pinimg.com/736x/4c/45/58/4c4558dec0f435357f1e2da17de481a2.jpg" alt="Kids">
+
+    <div class="strip-content">
+        <h3>KIDS</h3>
+        <p>Comfort Meets Cool Everyday</p>
+        <span>SHOP KIDS →</span>
+    </div>
+
+</a>
+
+
+</div>
+
+
+
+
+</section2>
+
+<section>
+<!-- =========================
+TOP BRANDS
+========================= -->
+
+<section class="top-brands">
+
+<h2>TOP BRANDS</h2>
+
+<div class="brand-grid">
+
+
+<!-- ZARA -->
+
+<a href="https://www.zara.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/8e/b1/c3/8eb1c341458ea05383b756039c13e54a.jpg" alt="Zara">
+
+<div class="brand-info">
+
+<h3>ZARA</h3>
+
+<div class="offer">
+Up To 50% OFF
+</div>
+
+<div class="desc">
+Premium Fashion Collection
+</div>
+
+</div>
+
+</a>
+
+
+
+<!-- H&M -->
+
+<a href="https://www2.hm.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/1200x/5d/d0/9b/5dd09b3130c458b81a3fc136b5fc809f.jpg" alt="H&M">
+
+<div class="brand-info">
+
+<h3>H&M</h3>
+
+<div class="offer">
+Up To 60% OFF
+</div>
+
+<div class="desc">
+Modern Clothing Style
+</div>
+
+</div>
+
+</a>
+
+
+
+<!-- NIKE -->
+
+<a href="https://www.nike.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/1200x/1a/e2/14/1ae214003be2b520592f8e5ad45cb978.jpg" alt="Nike">
+
+<div class="brand-info">
+
+<h3>NIKE</h3>
+
+<div class="offer">
+Sports Collection
+</div>
+
+<div class="desc">
+Premium Footwear
+</div>
+
+</div>
+
+</a>
+
+
+
+<!-- ADIDAS -->
+
+<a href="https://www.adidas.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/bd/40/33/bd4033ed56565c6f324ce97813cffa28.jpg" alt="Adidas">
+
+<div class="brand-info">
+
+<h3>ADIDAS</h3>
+
+<div class="offer">
+Up To 50% OFF
+</div>
+
+<div class="desc">
+Sports & Lifestyle
+</div>
+
+</div>
+
+</a>
+
+
+
+<!-- GUCCI -->
+
+<a href="https://www.gucci.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/1c/8f/e2/1c8fe2fd8c33af9a9cf2631c16cc8e84.jpg" alt="Gucci">
+
+<div class="brand-info">
+
+<h3>GUCCI</h3>
+
+<div class="offer">
+Luxury Collection
+</div>
+
+<div class="desc">
+Designer Fashion
+</div>
+
+</div>
+
+</a>
+
+<!-- PUMA -->
+
+<a href="https://www.puma.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/19/25/50/1925503471a7a73eedd82e8e9fcf2ea1.jpg" alt="Puma">
+
+<div class="brand-info">
+
+<h3>PUMA</h3>
+
+<div class="offer">
+Up To 55% OFF
+</div>
+
+<div class="desc">
+Running & Lifestyle Shoes
+</div>
+
+</div>
+
+</a>
+
+
+<!-- MANGO -->
+
+<a href="https://shop.mango.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/1200x/48/c2/51/48c25143791bc1fc52c9badac52aa161.jpg" alt="Mango">
+
+<div class="brand-info">
+
+<h3>MANGO</h3>
+
+<div class="offer">
+New Collection
+</div>
+
+<div class="desc">
+Luxury Women's Fashion
+</div>
+
+</div>
+
+</a>
+
+
+<!-- LEVI'S -->
+
+<a href="https://www.levi.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/d8/91/76/d89176f92c7d1106e6611e35daf59607.jpg" alt="Levis">
+
+<div class="brand-info">
+
+<h3>LEVI'S</h3>
+
+<div class="offer">
+Flat 40% OFF
+</div>
+
+<div class="desc">
+Premium Denim
+</div>
+
+</div>
+
+</a>
+
+
+<!-- TOMMY HILFIGER -->
+
+<a href="https://usa.tommy.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/1200x/3e/e2/08/3ee20804cc699923e0a6284e41e2e735.jpg" alt="Tommy">
+
+<div class="brand-info">
+
+<h3>TOMMY</h3>
+
+<div class="offer">
+Premium Wear
+</div>
+
+<div class="desc">
+Classic Fashion
+</div>
+
+</div>
+
+</a>
+
+
+<!-- CALVIN KLEIN -->
+
+<a href="https://www.calvinklein.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/94/ef/ed/94efedd038f97ca8b2892079eca5465c.jpg" alt="Calvin Klein">
+
+<div class="brand-info">
+
+<h3>CALVIN KLEIN</h3>
+
+<div class="offer">
+Up To 30% OFF
+</div>
+
+<div class="desc">
+Luxury Essentials
+</div>
+
+</div>
+
+</a>
+
+
+<!-- ARMANI -->
+
+<a href="https://www.armani.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/1200x/e2/37/aa/e237aa7467bed3e53fcbef9c1e164643.jpg" alt="Armani">
+
+<div class="brand-info">
+
+<h3>ARMANI</h3>
+
+<div class="offer">
+Luxury Fashion
+</div>
+
+<div class="desc">
+Designer Collection
+</div>
+
+</div>
+
+</a>
+
+
+<!-- LACOSTE -->
+
+<a href="https://www.lacoste.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/9f/38/08/9f3808c06290d0465dbaaf77501b1902.jpg" alt="Lacoste">
+
+<div class="brand-info">
+
+<h3>LACOSTE</h3>
+
+<div class="offer">
+Premium Style
+</div>
+
+<div class="desc">
+Lifestyle Fashion
+</div>
+
+</div>
+
+</a>
+
+
+<!-- NEW BALANCE -->
+
+<a href="https://www.newbalance.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/2e/2a/f5/2e2af564b6a3d0ca7795904922e7f07c.jpg" alt="New Balance">
+
+<div class="brand-info">
+
+<h3>NEW BALANCE</h3>
+
+<div class="offer">
+Sneaker Collection
+</div>
+
+<div class="desc">
+Comfort Footwear
+</div>
+
+</div>
+
+</a>
+
+
+<!-- FOSSIL -->
+
+<a href="https://www.fossil.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/55/a4/21/55a421a76cdc0764c79574695eafb51c.jpg" alt="Fossil">
+
+<div class="brand-info">
+
+<h3>FOSSIL</h3>
+
+<div class="offer">
+Luxury Watches
+</div>
+
+<div class="desc">
+Premium Accessories
+</div>
+
+</div>
+
+</a>
+
+
+<!-- TITAN -->
+
+<a href="https://www.titan.co.in/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/da/ab/12/daab123bb7091fda68fbb09fbd518d74.jpg" alt="Titan">
+
+<div class="brand-info">
+
+<h3>TITAN</h3>
+
+<div class="offer">
+New Arrivals
+</div>
+
+<div class="desc">
+Premium Watches
+</div>
+
+</div>
+
+</a>
+
+<!-- COACH -->
+
+<a href="https://www.coach.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/41/a3/2a/41a32a1b11105be97353bf4b6f011185.jpg" alt="Coach">
+
+<div class="brand-info">
+
+<h3>COACH</h3>
+
+<div class="offer">
+Luxury Bags
+</div>
+
+<div class="desc">
+Premium Handbags
+</div>
+
+</div>
+
+</a>
+
+
+<!-- GUESS -->
+
+<a href="https://www.guess.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/37/13/92/37139260670686f87f6f2caad40657fe.jpg" alt="Guess">
+
+<div class="brand-info">
+
+<h3>GUESS</h3>
+
+<div class="offer">
+Fashion Sale
+</div>
+
+<div class="desc">
+Bags & Accessories
+</div>
+
+</div>
+
+</a>
+
+
+<!-- CHANEL -->
+
+<a href="https://www.chanel.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/76/a8/23/76a823e17f9094bc1478154fa11aa352.jpg" alt="Chanel">
+
+<div class="brand-info">
+
+<h3>CHANEL</h3>
+
+<div class="offer">
+Luxury Beauty
+</div>
+
+<div class="desc">
+Perfumes Collection
+</div>
+
+</div>
+
+</a>
+
+
+<!-- PRADA -->
+
+<a href="https://www.prada.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/1200x/60/ac/31/60ac31bcf029e9c6aaff5e381e4eb7e0.jpg" alt="Prada">
+
+<div class="brand-info">
+
+<h3>PRADA</h3>
+
+<div class="offer">
+Designer Luxury
+</div>
+
+<div class="desc">
+Premium Fashion
+</div>
+
+</div>
+
+</a>
+
+
+<!-- LOUIS VUITTON -->
+
+<a href="https://www.louisvuitton.com/" target="_blank" class="brand-card">
+
+<img src="https://i.pinimg.com/736x/59/b1/40/59b140de1b6827f1a543c945c111ea29.jpg" alt="Louis Vuitton">
+
+<div class="brand-info">
+
+<h3>LOUIS VUITTON</h3>
+
+<div class="offer">
+Luxury Collection
+</div>
+
+<div class="desc">
+Designer Bags
+</div>
+
+</div>
+
+</a>
+
+
+</section>
+
+
+<div class="section-title">
+
+<h2>
+Why Choose <span>Rango Shopping?</span>
+</h2>
+
+</div>
+
+
+
+<div class="product-card">
+
+
+<div class="product-info">
+
+
+<p>
+
+✔ Premium Brands
+
+<br>
+
+✔ Luxury Collections
+
+<br>
+
+✔ Trusted Affiliate Shopping
+
+<br>
+
+✔ Elegant Shopping Experience
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+{% endblock %}

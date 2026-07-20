@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}
+Offers | Rango Shopping
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Exclusive Luxury Offers
+        </h1>
+
+        <p>
+            Premium Deals • Limited Time Offers • Special Collections
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<section>
+
+
+<div class="section-title">
+
+<h2>
+Special <span>Offers</span>
+</h2>
+
+<p>
+Enjoy premium products at exclusive prices.
+</p>
+
+</div>
+
+
+
+
+<div class="products">
+
+
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='images/products/offer1.jpg') }}">
+
+
+<div class="product-info">
+
+<h3>
+Luxury Fashion Deal
+</h3>
+
+<p>
+Premium collection with special discount.
+</p>
+
+<p class="price">
+30% OFF
+</p>
+
+
+<a href="/product" class="btn">
+Shop Now
+</a>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='images/products/offer2.jpg') }}">
+
+
+<div class="product-info">
+
+<h3>
+Premium Accessories Offer
+</h3>
+
+<p>
+Elegant accessories at special prices.
+</p>
+
+<p class="price">
+25% OFF
+</p>
+
+
+<a href="/product" class="btn">
+Shop Now
+</a>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="product-card">
+
+<img src="{{ url_for('static', filename='images/products/offer3.jpg') }}">
+
+
+<div class="product-info">
+
+<h3>
+Luxury Footwear Sale
+</h3>
+
+<p>
+Upgrade your style with premium shoes.
+</p>
+
+<p class="price">
+40% OFF
+</p>
+
+
+<a href="/product" class="btn">
+Shop Now
+</a>
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+<section>
+
+
+<div class="product-card">
+
+<div class="product-info">
+
+
+<h3>
+Affiliate Shopping Benefits
+</h3>
+
+
+<p>
+
+Rango Shopping helps you discover premium products from trusted brands.
+Offers and deals may vary according to partner websites.
+
+</p>
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,1833 @@
+{% extends "base.html" %}
+
+{% block title %}
+Men | Rango Shopping
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: #ffffff; color: #111111; padding-bottom: 60px; }
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+        .hero-banner { width: 100%; height: 440px; background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://unsplash.com') no-repeat center center; background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #ffffff; padding: 20px; margin-bottom: 40px; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 15px; text-transform: uppercase; }
+        .hero-subtitle { font-size: 1.1rem; max-width: 600px; font-weight: 300; line-height: 1.6; }
+        .brands-bar { text-align: center; padding: 22px; background-color: #f9f9f9; border-top: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee; margin-bottom: 50px; }
+        .brands-text { font-size: 0.9rem; color: #555555; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+        .brands-text span { color: #111111; font-weight: 700; margin: 0 10px; }
+        .main-heading { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600; text-align: center; margin-bottom: 50px; position: relative; }
+        .main-heading::after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 60px; height: 2px; background-color: #111111; }
+        .category-section { margin-bottom: 60px; }
+        .category-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 12px; }
+        .category-title { font-size: 1.3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        
+
+/*LEFT RIGHT PRODUCT SCROLL
+==================================== */
+
+.product-slider{
+display:flex;
+gap:22px;
+overflow-x:auto;
+scroll-behavior:smooth;
+padding-bottom:15px;
+}
+
+.product-slider::-webkit-scrollbar{
+height:8px;
+}
+
+.product-slider::-webkit-scrollbar-thumb{
+background:#111;
+border-radius:20px;
+}
+        .product-card { flex: 0 0 270px; background: #ffffff; border: 1px solid #f0f0f0; padding: 12px; position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .product-card:hover { border-color: #111111; box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .heart-icon { position: absolute; top: 15px; right: 15px; background: none; border: none; cursor: pointer; z-index: 5; }
+        .heart-icon svg { width: 18px; height: 18px; fill: none; stroke: #111111; stroke-width: 1.5; }
+        .heart-icon:hover svg { fill: #111111; }
+        .badge { position: absolute; top: 15px; left: 15px; font-size: 0.65rem; color: #777777; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; z-index: 2; }
+        .img-wrap { width: 100%; height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 12px; background: #fafafa; }
+        .product-img { width: 85%; height: auto; max-height: 100%; object-fit: contain; transition: transform 0.3s; }
+        .product-card:hover .product-img { transform: scale(1.04); }
+        .p-brand { font-size: 0.9rem; font-weight: 600; color: #111111; margin-bottom: 3px; }
+        .p-desc { font-size: 0.8rem; color: #666666; line-height: 1.4; margin-bottom: 8px; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .p-price { font-size: 0.95rem; font-weight: 600; color: #111111; margin-bottom: 12px; }
+        .btn { display: block; width: 100%; background-color: #111111; color: #ffffff; text-align: center; padding: 11px; text-decoration: none; font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-top: auto; }
+        .btn:hover { background-color: #333333; }
+        @media (max-width: 1024px) { .container { padding: 0 20px; } .hero-title { font-size: 2.6rem; } }
+        @media (max-width: 768px) { .hero-banner { height: 340px; } .hero-title { font-size: 2rem; } .product-card { flex: 0 0 230px; } .img-wrap { height: 210px; } }
+    </style>
+
+
+<section>
+
+    <section>
+    <!-- 1. Top Hero Banner -->
+    <div class="hero-banner">
+        <h1 class="hero-title">The Footwear Edit</h1>
+        <p class="hero-subtitle">Discover a curated collection of premium shoes crafted for ultimate performance, luxury, and unmatched daily style.</p>
+    </div>
+
+    <!-- 2. Top Brands Paragraph Line -->
+    <div class="brands-bar">
+        <p class="brands-text">
+            Featured Global Brands: 
+            <span>Adidas</span> • <span>Gucci</span> • <span>Puma</span> • <span>New Balance</span> • <span>Prada</span> • <span>Louis Vuitton</span>
+        </p>
+    </div>
+
+    <div class="container">
+        <h2 class="main-heading">Browse By Categories</h2>
+
+<section class="product-section" id="sneakers">
+
+<div class="section-title">
+<h2>SNEAKERS</h2>
+<a href="#">View All →</a>
+</div>
+
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://picsum.photos/500/600?random=101" alt="Sneaker">
+<h3>Nike Air Max 270</h3>
+<p class="brand">Nike</p>
+<p class="price">$160</p>
+<p class="rating">★★★★★ (4.9)</p>
+<p class="desc">Premium lifestyle sneakers with lightweight comfort.</p>
+<a href="#" class="buy-btn">Buy On Official Site</a>
+</div>
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://picsum.photos/500/600?random=102" alt="Sneaker">
+<h3>Adidas Ultraboost</h3>
+<p class="brand">Adidas</p>
+<p class="price">$190</p>
+<p class="rating">★★★★★ (4.8)</p>
+<p class="desc">Boost cushioning with premium running comfort.</p>
+<a href="#" class="buy-btn">Buy On Official Site</a>
+</div>
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://picsum.photos/500/600?random=103" alt="Sneaker">
+<h3>Puma RS-X</h3>
+<p class="brand">Puma</p>
+<p class="price">$145</p>
+<p class="rating">★★★★☆ (4.7)</p>
+<p class="desc">Bold streetwear sneakers with premium design.</p>
+<a href="#" class="buy-btn">Buy On Official Site</a>
+</div>
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://picsum.photos/500/600?random=104" alt="Sneaker">
+<h3>New Balance 9060</h3>
+<p class="brand">New Balance</p>
+<p class="price">$170</p>
+<p class="rating">★★★★★ (4.8)</p>
+<p class="desc">Modern comfort with iconic New Balance styling.</p>
+<a href="#" class="buy-btn">Buy On Official Site</a>
+</div>
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://picsum.photos/500/600?random=105" alt="Sneaker">
+<h3>Luxury Trainer</h3>
+<p class="brand">Luxury Brand</p>
+<p class="price">$980</p>
+<p class="rating">★★★★★ (5.0)</p>
+<p class="desc">Premium leather luxury sneakers.</p>
+<a href="#" class="buy-btn">Buy On Official Site</a>
+</div>
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://picsum.photos/500/600?random=106" alt="Sneaker">
+<h3>Premium Street Runner</h3>
+<p class="brand">Designer</p>
+<p class="price">$850</p>
+<p class="rating">★★★★★ (4.9)</p>
+<p class="desc">Luxury everyday sneakers with premium finish.</p>
+<a href="#" class="buy-btn">Buy On Official Site</a>
+</div>
+
+<!-- Product 7 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=107" alt="Sneaker">
+
+<h3>Air Jordan Retro High</h3>
+
+<p class="brand">Jordan</p>
+
+<p class="price">$220</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Iconic basketball sneaker with premium leather finish.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 8 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=108" alt="Sneaker">
+
+<h3>Nike Dunk Low</h3>
+
+<p class="brand">Nike</p>
+
+<p class="price">$130</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Classic low-top sneaker for everyday lifestyle.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 9 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=109" alt="Sneaker">
+
+<h3>Adidas Samba OG</h3>
+
+<p class="brand">Adidas</p>
+
+<p class="price">$120</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Legendary football-inspired street sneaker.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 10 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=110" alt="Sneaker">
+
+<h3>Puma Suede Classic</h3>
+
+<p class="brand">Puma</p>
+
+<p class="price">$95</p>
+
+<p class="rating">★★★★☆ (4.7)</p>
+
+<p class="desc">
+Classic suede sneakers with timeless style.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 11 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=111" alt="Sneaker">
+
+<h3>New Balance 574</h3>
+
+<p class="brand">New Balance</p>
+
+<p class="price">$110</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Comfortable everyday sneaker with premium cushioning.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 12 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=112" alt="Sneaker">
+
+<h3>Luxury Fashion Sneaker</h3>
+
+<p class="brand">Designer Collection</p>
+
+<p class="price">$1190</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Luxury handcrafted sneaker with premium materials.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+</div>
+</section>
+
+
+
+
+
+<section class="product-section" id="sneakers">
+
+<div class="section-title">
+<h2>SNEAKERS</h2>
+<a href="#">View All →</a>
+</div>
+
+<div class="product-slider">
+
+<!-- Product 1 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=201" alt="Nike Running">
+
+<h3>Nike Air Zoom Pegasus 41</h3>
+
+<p class="brand">Nike</p>
+
+<p class="price">$145</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Lightweight everyday running shoes with responsive Zoom Air cushioning.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 2 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=202" alt="Adidas Running">
+
+<h3>Adidas Adizero SL</h3>
+
+<p class="brand">Adidas</p>
+
+<p class="price">$130</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Fast and lightweight running shoes designed for daily training.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 3 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=203" alt="Puma Running">
+
+<h3>Puma Velocity Nitro</h3>
+
+<p class="brand">Puma</p>
+
+<p class="price">$150</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Premium Nitro foam delivers soft cushioning and speed.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 4 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=204" alt="New Balance Running">
+
+<h3>New Balance Fresh Foam X</h3>
+
+<p class="brand">New Balance</p>
+
+<p class="price">$170</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Fresh Foam X technology for long-distance comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 5 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=205" alt="Luxury Running">
+
+<h3>Luxury Speed Runner</h3>
+
+<p class="brand">Designer</p>
+
+<p class="price">$890</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Luxury running-inspired sneakers crafted with premium materials.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 6 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=206" alt="Premium Running">
+
+<h3>Elite Marathon Pro</h3>
+
+<p class="brand">Performance</p>
+
+<p class="price">$210</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Professional marathon running shoes with ultra-light cushioning.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 7 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=207" alt="Nike Running Elite">
+
+<h3>Nike Vaporfly 3</h3>
+
+<p class="brand">Nike</p>
+
+<p class="price">$260</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Elite racing shoes built for maximum speed and energy return.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 8 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=208" alt="Adidas Running">
+
+<h3>Adidas Supernova Rise</h3>
+
+<p class="brand">Adidas</p>
+
+<p class="price">$150</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Comfortable daily running shoes with Dreamstrike+ cushioning.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 9 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=209" alt="Puma Running">
+
+<h3>Puma Deviate Nitro 3</h3>
+
+<p class="brand">Puma</p>
+
+<p class="price">$170</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Carbon-plated running shoes designed for speed and comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 10 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=210" alt="New Balance Running">
+
+<h3>New Balance FuelCell Rebel</h3>
+
+<p class="brand">New Balance</p>
+
+<p class="price">$160</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Lightweight running shoes with responsive FuelCell foam.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 11 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=211" alt="Luxury Running">
+
+<h3>Luxury Marathon Elite</h3>
+
+<p class="brand">Luxury Collection</p>
+
+<p class="price">$990</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Premium handcrafted running-inspired luxury sneakers.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 12 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=212" alt="Performance Running">
+
+<h3>Ultra Speed Runner X</h3>
+
+<p class="brand">Performance</p>
+
+<p class="price">$190</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Designed for athletes seeking lightweight speed and comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+</div>
+</section>
+
+<!-- =========================
+SPORTS SHOES
+========================= -->
+
+
+
+<section class="product-section" id="sports">
+
+<div class="section-title">
+
+<h2>SPORTS SHOES</h2>
+
+<a href="#">View All →</a>
+
+</div>
+
+<div class="product-slider">
+
+<!-- Product 1 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=301" alt="Nike Metcon">
+
+<h3>Nike Metcon 9</h3>
+
+<p class="brand">Nike</p>
+
+<p class="price">$150</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Premium cross-training shoes for gym and fitness.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 2 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=302" alt="Adidas Dropset">
+
+<h3>Adidas Dropset Trainer</h3>
+
+<p class="brand">Adidas</p>
+
+<p class="price">$145</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Stable training shoes for heavy workouts.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 3 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=303" alt="Puma Fuse">
+
+<h3>Puma Fuse 3.0</h3>
+
+<p class="brand">Puma</p>
+
+<p class="price">$130</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Lightweight sports shoes with maximum grip.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 4 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=304" alt="New Balance">
+
+<h3>New Balance FuelCell</h3>
+
+<p class="brand">New Balance</p>
+
+<p class="price">$165</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+High-performance sports shoes with FuelCell foam.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 5 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=305" alt="Designer">
+
+<h3>Luxury Sport Trainer</h3>
+
+<p class="brand">Designer</p>
+
+<p class="price">$990</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Luxury sports sneakers with handcrafted finish.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 6 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=306" alt="Elite">
+
+<h3>Elite Performance Pro</h3>
+
+<p class="brand">Performance</p>
+
+<p class="price">$210</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Professional sports shoes built for athletes.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 7 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=307" alt="Nike Training">
+
+<h3>Nike Free Metcon</h3>
+
+<p class="brand">Nike</p>
+
+<p class="price">$155</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Flexible training shoes for strength and cardio workouts.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 8 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=308" alt="Adidas Trainer">
+
+<h3>Adidas Rapidmove ADV</h3>
+
+<p class="brand">Adidas</p>
+
+<p class="price">$150</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+High-performance gym shoes with superior stability.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 9 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=309" alt="Puma Training">
+
+<h3>Puma PWRFrame TR 3</h3>
+
+<p class="brand">Puma</p>
+
+<p class="price">$140</p>
+
+<p class="rating">★★★★☆ (4.7)</p>
+
+<p class="desc">
+Supportive cross-training shoes with excellent grip.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 10 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=310" alt="New Balance Trainer">
+
+<h3>New Balance Minimus TR</h3>
+
+<p class="brand">New Balance</p>
+
+<p class="price">$135</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Minimalist training shoes built for agility and strength.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 11 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=311" alt="Luxury Sport">
+
+<h3>Designer Active Elite</h3>
+
+<p class="brand">Luxury Collection</p>
+
+<p class="price">$1,090</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Luxury active sneakers crafted from premium materials.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 12 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=312" alt="Performance Shoes">
+
+<h3>Ultimate Performance X</h3>
+
+<p class="brand">Performance</p>
+
+<p class="price">$220</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Professional sports shoes engineered for elite athletes.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+</div>
+</section>
+
+
+
+
+
+
+<section class="product-section" id="sneakers">
+
+<div class="section-title">
+<h2>SNEAKERS</h2>
+<a href="#">View All →</a>
+</div>
+
+<div class="product-slider">
+
+<!-- Product 1 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=401" alt="Oxford Shoes">
+
+<h3>Oxford Leather Elite</h3>
+
+<p class="brand">Luxury Formal</p>
+
+<p class="price">$180</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Premium leather Oxford shoes for business meetings and formal occasions.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 2 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=402" alt="Derby Shoes">
+
+<h3>Classic Derby Premium</h3>
+
+<p class="brand">Executive</p>
+
+<p class="price">$195</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Elegant Derby shoes crafted with genuine leather.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 3 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=403" alt="Loafers">
+
+<h3>Italian Leather Loafers</h3>
+
+<p class="brand">Designer</p>
+
+<p class="price">$240</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Luxury slip-on loafers with handcrafted Italian finish.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 4 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=404" alt="Monk Strap">
+
+<h3>Double Monk Strap</h3>
+
+<p class="brand">Luxury Collection</p>
+
+<p class="price">$260</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Sophisticated monk strap shoes with polished leather.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 5 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=405" alt="Business Shoes">
+
+<h3>Business Executive Pro</h3>
+
+<p class="brand">Executive</p>
+
+<p class="price">$175</p>
+
+<p class="rating">★★★★☆ (4.7)</p>
+
+<p class="desc">
+Comfortable business shoes for everyday office wear.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 6 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=406" alt="Luxury Dress Shoes">
+
+<h3>Royal Dress Shoes</h3>
+
+<p class="brand">Premium</p>
+
+<p class="price">$320</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Luxury formal shoes designed for weddings and premium events.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 7 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=407" alt="Formal Shoes">
+
+<h3>Luxury Oxford Signature</h3>
+
+<p class="brand">Premium Collection</p>
+
+<p class="price">$350</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Handcrafted luxury Oxford shoes made with premium leather.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 8 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=408" alt="Formal Shoes">
+
+<h3>Executive Derby Plus</h3>
+
+<p class="brand">Executive</p>
+
+<p class="price">$210</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Elegant Derby shoes for executives and professionals.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 9 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=409" alt="Formal Shoes">
+
+<h3>Italian Office Classic</h3>
+
+<p class="brand">Italian Luxury</p>
+
+<p class="price">$295</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Premium Italian leather shoes with timeless design.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 10 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=410" alt="Formal Shoes">
+
+<h3>Royal Leather Derby</h3>
+
+<p class="brand">Royal</p>
+
+<p class="price">$275</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Business formal shoes with soft leather comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 11 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=411" alt="Formal Shoes">
+
+<h3>Elite Office Loafers</h3>
+
+<p class="brand">Elite</p>
+
+<p class="price">$185</p>
+
+<p class="rating">★★★★☆ (4.7)</p>
+
+<p class="desc">
+Premium loafers designed for all-day office comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 12 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=412" alt="Formal Shoes">
+
+<h3>Diamond Executive Edition</h3>
+
+<p class="brand">Luxury Collection</p>
+
+<p class="price">$450</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Top-tier handcrafted formal shoes with luxury finish.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+</div>
+</section>
+
+
+
+
+<section class="product-section" id="sneakers">
+
+<div class="section-title">
+<h2>SNEAKERS</h2>
+<a href="#">View All →</a>
+</div>
+
+<div class="product-slider">
+
+<!-- Product 1 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=501" alt="Boots">
+
+<h3>Timberland Premium 6-Inch</h3>
+
+<p class="brand">Timberland</p>
+
+<p class="price">$220</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Premium waterproof leather boots for outdoor adventures.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 2 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=502" alt="Boots">
+
+<h3>Dr. Martens 1460</h3>
+
+<p class="brand">Dr. Martens</p>
+
+<p class="price">$180</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Classic leather lace-up boots with iconic yellow stitching.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 3 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=503" alt="Boots">
+
+<h3>Red Wing Iron Ranger</h3>
+
+<p class="brand">Red Wing</p>
+
+<p class="price">$350</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Heritage leather boots built for durability and comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 4 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=504" alt="Boots">
+
+<h3>Chelsea Leather Boots</h3>
+
+<p class="brand">Luxury Collection</p>
+
+<p class="price">$260</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Elegant Chelsea boots crafted from premium leather.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 5 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=505" alt="Boots">
+
+<h3>Hiking Adventure Pro</h3>
+
+<p class="brand">Outdoor</p>
+
+<p class="price">$170</p>
+
+<p class="rating">★★★★☆ (4.7)</p>
+
+<p class="desc">
+Lightweight hiking boots with excellent grip and support.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 6 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=506" alt="Boots">
+
+<h3>Luxury Combat Boots</h3>
+
+<p class="brand">Designer</p>
+
+<p class="price">$520</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Premium combat boots with handcrafted luxury finish.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 7 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=507" alt="Boots">
+
+<h3>Timberland GreenStride Boot</h3>
+
+<p class="brand">Timberland</p>
+
+<p class="price">$240</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Eco-friendly premium leather boots with all-day comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 8 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=508" alt="Boots">
+
+<h3>Dr. Martens Jadon Boot</h3>
+
+<p class="brand">Dr. Martens</p>
+
+<p class="price">$230</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Platform leather boots with iconic style and durability.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 9 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=509" alt="Boots">
+
+<h3>Red Wing Moc Toe</h3>
+
+<p class="brand">Red Wing</p>
+
+<p class="price">$330</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Legendary handcrafted work boots made from premium leather.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 10 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=510" alt="Boots">
+
+<h3>Luxury Chelsea Pro</h3>
+
+<p class="brand">Designer</p>
+
+<p class="price">$390</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Modern Chelsea boots with elegant luxury finish.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 11 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=511" alt="Boots">
+
+<h3>Mountain Trek Elite</h3>
+
+<p class="brand">Outdoor</p>
+
+<p class="price">$210</p>
+
+<p class="rating">★★★★☆ (4.7)</p>
+
+<p class="desc">
+High-performance trekking boots for mountain adventures.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 12 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=512" alt="Boots">
+
+<h3>Royal Leather Combat</h3>
+
+<p class="brand">Premium Collection</p>
+
+<p class="price">$590</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Luxury handcrafted combat boots with premium leather finish.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+</div>
+</section>
+
+
+
+<section class="product-section" id="sneakers">
+
+<div class="section-title">
+<h2>SNEAKERS</h2>
+<a href="#">View All →</a>
+</div>
+
+<div class="product-slider">
+<!-- Product 1 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=601" alt="Sandals">
+
+<h3>Birkenstock Arizona</h3>
+
+<p class="brand">Birkenstock</p>
+
+<p class="price">$120</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Premium leather sandals with world-famous comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 2 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=602" alt="Sandals">
+
+<h3>Nike Calm Sandal</h3>
+
+<p class="brand">Nike</p>
+
+<p class="price">$85</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Comfortable everyday sandals with lightweight cushioning.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 3 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=603" alt="Sandals">
+
+<h3>Adidas Adilette Comfort</h3>
+
+<p class="brand">Adidas</p>
+
+<p class="price">$70</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Premium slides with soft Cloudfoam comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 4 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=604" alt="Sandals">
+
+<h3>Puma Leadcat 2.0</h3>
+
+<p class="brand">Puma</p>
+
+<p class="price">$60</p>
+
+<p class="rating">★★★★☆ (4.7)</p>
+
+<p class="desc">
+Stylish sports slides with cushioned footbed.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 5 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=605" alt="Sandals">
+
+<h3>Luxury Leather Slides</h3>
+
+<p class="brand">Designer</p>
+
+<p class="price">$490</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Luxury handcrafted leather slides with premium finish.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 6 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=606" alt="Sandals">
+
+<h3>Beach Comfort Elite</h3>
+
+<p class="brand">Premium Collection</p>
+
+<p class="price">$95</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Perfect beach sandals with lightweight comfort and style.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 7 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=607" alt="Sandals">
+
+<h3>Crocs Echo Slide</h3>
+
+<p class="brand">Crocs</p>
+
+<p class="price">$75</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Modern comfort slides with lightweight Croslite foam.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 8 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=608" alt="Sandals">
+
+<h3>Under Armour Ignite Pro</h3>
+
+<p class="brand">Under Armour</p>
+
+<p class="price">$65</p>
+
+<p class="rating">★★★★★ (4.8)</p>
+
+<p class="desc">
+Soft memory foam footbed for all-day comfort.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 9 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=609" alt="Sandals">
+
+<h3>New Balance Comfort Slide</h3>
+
+<p class="brand">New Balance</p>
+
+<p class="price">$55</p>
+
+<p class="rating">★★★★☆ (4.7)</p>
+
+<p class="desc">
+Comfortable everyday slides with premium cushioning.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 10 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=610" alt="Sandals">
+
+<h3>Luxury Beach Sandal</h3>
+
+<p class="brand">Luxury Collection</p>
+
+<p class="price">$520</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Premium handcrafted beach sandals with luxury finish.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 11 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=611" alt="Sandals">
+
+<h3>Premium Summer Slides</h3>
+
+<p class="brand">Designer</p>
+
+<p class="price">$145</p>
+
+<p class="rating">★★★★★ (4.9)</p>
+
+<p class="desc">
+Elegant summer slides designed for comfort and style.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+<!-- Product 12 -->
+
+<div class="product-card">
+
+<img src="https://picsum.photos/500/600?random=612" alt="Sandals">
+
+<h3>Royal Leather Sandals</h3>
+
+<p class="brand">Premium Collection</p>
+
+<p class="price">$290</p>
+
+<p class="rating">★★★★★ (5.0)</p>
+
+<p class="desc">
+Luxury genuine leather sandals with premium craftsmanship.
+</p>
+
+<a href="#" class="buy-btn">
+Buy On Official Site
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height,  width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0,  user-scalable=no, target-densitydpi=device-dpi, viewport-fit=cover">
+
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="LgM7XwMlO6DVPua_OtQUU1BwNMR4y5cI8YiZZHfDs8" />
+
+    <!-- Admitad Verification -->
+    <meta name="verify-admitad" content="f92a2bf44e" />
+
+    <title>{% block title %}Rango Shopping{% endblock %}</title>
+
+    <link rel="icon" type="logo.jpeg" href="{{ url_for('static', filename='logo.jpeg') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+     <div class="logo-box">
+            <a href="/">
+
+                <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="RANGO" style="height: 60px; object-fit: contain;">
+                <h1 class="logo-text">RANGO</h1>
+            </a>
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="/men">Men</a>
+
+        <a href="/women">Women</a>
+
+        <a href="/kids">Kids</a>
+
+        <a href="/offers">Offers</a>
+
+        <a href="/wishlist">Wishlist</a>
+
+       <form action="/search" method="GET" class="search-form">
+
+    <input
+        type="text"
+        name="query"
+        placeholder="Search Products..."
+    >
+
+    <button type="submit">Search</button>
+
+</form>
+
+    </nav>
+
+</header>
+        <div class="announcement-bar">
+    <span>
+        🔥 MID SEASON SALE • UP TO 70% OFF • FREE SHIPPING • PREMIUM BRANDS • LIMITED TIME OFFER 🔥
+    </span>
+</div>
+
+
+<main>
+
+{% block content %}
+
+{% endblock %}
+
+</main>
+
+<footer>
+    <div>
+
+    <h2>Rango Shopping</h2>
+
+    <p>Luxury Fashion • Original Brands • Premium Experience</p>
+
+    <p>
+        Designed & Developed by <strong>Yamaan</strong>
+    </p>
+
+    <p>
+        Contact :
+        yamaanm291@gmail.com
+    </p>
+
+    <p style="font-size:13px">
+
+        Affiliate Disclosure :
+        Rango Shopping may earn a small commission when you purchase through affiliate links. This never increases the price you pay.
+
+    </p>
+
+    <p>
+
+        © 2026 Rango Shopping. All Rights Reserved.
+
+    </p>
+    
+   </div> 
+
+</footer>
+
+<!-- JavaScript Files -->
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<script src="{{ url_for('static', filename='wishlist.js') }}"></script>
+
+</body>
+
+</html>
+
+</body>
+
+</html>
