@@ -5,7 +5,7 @@ import sqlite3
 app = Flask(__name__)
 
 
-DATABASE = "rango.db"
+DATABASE = "database/rango.db"
 
 
 
@@ -132,35 +132,6 @@ def product(id):
 
 
 
-
-# Search
-
-@app.route("/search")
-def search():
-
-    query = request.args.get("query", "").strip()
-
-    if query == "":
-        return render_template(
-            "search.html",
-            products=[],
-            query=""
-        )
-
-    conn = get_db_connection()
-
-    products = conn.execute(
-        "SELECT * FROM products WHERE name LIKE ?",
-        ('%' + query + '%',)
-    ).fetchall()
-
-    conn.close()
-
-    return render_template(
-        "search.html",
-        products=products,
-        query=query
-    )
 
 
 # Wishlist
@@ -400,6 +371,7 @@ def kids_sunglasses():
 def robots_txt():
     return "User-agent: *\nAllow: /"
 
+
 # Terms
 
 @app.route("/terms")
@@ -424,3 +396,5 @@ def page_not_found(error):
 if __name__ == "__main__":
 
     app.run(debug=True)
+
+    
