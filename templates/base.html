@@ -22,12 +22,9 @@
 
 <header class="navbar">
 
-     <div class="logo-box">
-            <a href="/">
-
-                <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="RANGO" style="height: 60px; object-fit: contain;">
-                <h1 class="logo-text">RANGO</h1>
-            </a>
+    <div class="logo-box">
+                <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="RANGO" style="height: 60px; object-fit: contain;"><span>RANGO</span>
+    </div>
     <nav>
 
         <a href="/">Home</a>
@@ -41,17 +38,6 @@
         <a href="/offers">Offers</a>
 
         <a href="/wishlist">Wishlist</a>
-
-       <form action="/search" method="GET" class="search-form">
-
-    <input
-        type="text"
-        name="query"
-        placeholder="Search Products..."
-    >
-
-    <button type="submit">Search</button>
-
 </form>
 
     </nav>
