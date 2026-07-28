@@ -1,0 +1,3201 @@
+{% extends "base.html" %}
+
+{% block title %}
+Men | Rango Shopping
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: #ffffff; color: #111111; padding-bottom: 60px; }
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+        .hero-banner { width: 100%; height: 440px; background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://unsplash.com') no-repeat center center; background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #ffffff; padding: 20px; margin-bottom: 40px; }
+        .hero-title {color: #000000; font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 15px; text-transform: uppercase; }
+        .hero-subtitle {color: #3b3226; font-size: 1.1rem; max-width: 600px; font-weight: 300; line-height: 1.6; }
+        .brands-bar { text-align: center; padding: 22px; background-color: #f9f9f9; border-top: 1px solid #eeeeee; border-bottom: 1px solid #eeeeee; margin-bottom: 50px; }
+        .brands-text { font-size: 0.9rem; color: #555555; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+        .brands-text span { color: #111111; font-weight: 700; margin: 0 10px; }
+        .main-heading { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600; text-align: center; margin-bottom: 50px; position: relative; }
+        .main-heading::after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 60px; height: 2px; background-color: #111111; }
+        .category-section { margin-bottom: 60px; }
+        .category-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 12px; }
+        .category-title { font-size: 1.3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        
+
+/*LEFT RIGHT PRODUCT SCROLL
+==================================== */
+
+.product-slider{
+display:flex;
+gap:22px;
+overflow-x:auto;
+scroll-behavior:smooth;
+padding-bottom:15px;
+}
+
+.product-slider::-webkit-scrollbar{
+height:8px;
+}
+
+.product-slider::-webkit-scrollbar-thumb{
+background:#111;
+border-radius:20px;
+}
+.buy-btn{
+    display:block;
+    width:100%;
+    padding:12px;
+    text-align:center;
+    text-decoration:none;
+    background:#ffffff;
+    color:#111;
+    border:2px solid #111;
+    border-radius:10px;
+    font-weight:700;
+    transition:0.3s ease;
+    cursor:pointer;
+}
+
+.buy-btn:hover{
+    background:#111;
+    color:#fff;
+    border-color:#111;
+}
+.hero-banner{
+    background-image: url(https://media.istockphoto.com/id/517369514/photo/handsome-young-man-outdoor-in-winter-fashion.jpg?s=612x612&w=0&k=20&c=nnOMxhMdO4AOsEZBYxIPukg09hzbr8JJ8EMdQOhlIiw=);
+}
+        .product-card { flex: 0 0 270px; background: #ffffff; border: 1px solid #f0f0f0; padding: 12px; position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .product-card:hover { border-color: #111111; box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .heart-icon { position: absolute; top: 15px; right: 15px; background: none; border: none; cursor: pointer; z-index: 5; }
+        .heart-icon svg { width: 18px; height: 18px; fill: none; stroke: #111111; stroke-width: 1.5; }
+        .heart-icon:hover svg { fill: #111111; }
+        .badge { position: absolute; top: 15px; left: 15px; font-size: 0.65rem; color: #777777; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; z-index: 2; }
+        .img-wrap { width: 100%; height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 12px; background: #fafafa; }
+        .product-img { width: 85%; height: auto; max-height: 100%; object-fit: contain; transition: transform 0.3s; }
+        .product-card:hover .product-img { transform: scale(1.04); }
+        .p-brand { font-size: 0.9rem; font-weight: 600; color: #111111; margin-bottom: 3px; }
+        .p-desc { font-size: 0.8rem; color: #666666; line-height: 1.4; margin-bottom: 8px; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .p-price { font-size: 0.95rem; font-weight: 600; color: #111111; margin-bottom: 12px; }
+        .btn { display: block; width: 100%; background-color: #111111; color: #ffffff; text-align: center; padding: 11px; text-decoration: none; font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-top: auto; }
+        .btn:hover { background-color: #333333; }
+        @media (max-width: 1024px) { .container { padding: 0 20px; } .hero-title { font-size: 2.6rem; } }
+        @media (max-width: 768px) { .hero-banner { height: 340px; } .hero-title { font-size: 2rem; } .product-card { flex: 0 0 230px; } .img-wrap { height: 210px; } }
+    </style>
+
+
+<section>
+
+<section>
+        <!-- 1. Top Hero Banner -->
+        <div class="hero-banner">
+           <h1 class="hero-title">MODERN GENTLEMAN</h1>
+        </div>
+
+        <!-- 2. Top Brands Paragraph Line -->
+        <div class="brands-bar">
+            <p class="brands-text">
+               Featured Global Brands: 
+              <span>Gucci</span> • <span>Zara</span> • <span>H&M</span> • <span>Mango</span> • <span>Prada</span> • <span>Louis Vuitton</span>• <span>Calvin Klein</span>• <span>Tommy</span>• <span>& others</span>
+            </p>
+        </div>
+
+        <div class="container">
+            <h2 class="main-heading">Browse By Brands</h2>
+        </div>
+</section class="product-section" id="Upper Fashion">
+
+ <!-- Product card section 1 -->
+
+<section>
+    <div class="section-title">
+       <h2>• GUCCI</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1779989436/872471_XJHX6_3115_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton piquet polo shirt with embroidery</h3>
+<p class="price">$850</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/cotton-piquet-polo-shirt-with-embroidery-p-872471XJHX63115" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1778867108/864625_XJH02_6195_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey T-shirt with devoré detail</h3>
+<p class="price">$590</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/cotton-jersey-t-shirt-with-devore-detail-p-864625XJH026195" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1775741407/872468_XJHX5_9000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton piquet polo shirt</h3>
+<p class="price">$820</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/cotton-jersey-piquet-polo-shirt-p-872468XJHX59000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1774373452/872468_XJHX5_1000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton piquet polo shirt</h3>
+<p class="price">$820</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/cotton-jersey-piquet-polo-shirt-p-872468XJHX51000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1777393817/864626_XJHYA_1152_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey printed T-shirt</h3>
+<p class="price">$720</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/cotton-jersey-t-shirt-with-print-p-864626XJHYA1152" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1779989415/864626_XJHYA_9066_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey printed T-shirt</h3>
+<p class="price">$720</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/cotton-jersey-t-shirt-with-print-p-864626XJHYA9066" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1777394706/864625_XJH02_1044_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey T-shirt with devoré detail</h3>
+<p class="price">$590</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/cotton-jersey-t-shirt-with-devore-detail-p-864625XJH021044" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1779990319/875092_XJH0U_1152_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey printed polo shirt</h3>
+<p class="price">$920</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/cotton-jersey-polo-shirt-with-print-p-875092XJH0U1152" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1777566658/875092_XJH0U_9066_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey polo shirt with web</h3>
+<p class="price">$920</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/cotton-jersey-polo-shirt-with-web-p-875092XJH0U9066" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1778741113/875092_XJH0T_9000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey polo shirt with embroidery</h3>
+<p class="price">$850</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/cotton-jersey-polo-shirt-with-embroidery-p-875092XJH0T9000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1779990308/872471_XJHX6_6294_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton piquet polo shirt with embroidery</h3>
+<p class="price">$850</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/cotton-piquet-polo-shirt-with-embroidery-p-872471XJHX66294" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1780074025/875092_XJH0T_1000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton piquet polo shirt with embroidery</h3>
+<p class="price">$850</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/cotton-jersey-polo-shirt-with-embroidery-p-875092XJH0T1000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1779989427/872416_XJHX4_1000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>GG technical jersey jacquard polo shirt</h3>
+<p class="price">$1,250</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/gg-technical-jersey-jacquard-polo-shirt-p-872416XJHX41000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1774888225/866186_XJHX2_9000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New soft rayon jersey T-shirt</h3>
+<p class="price">$720</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/soft-rayon-jersey-t-shirt-p-866186XJHX29000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1778867128/872487_XJHYA_9097_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey T-shirt with print</h3>
+<p class="price">$720</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/cotton-jersey-t-shirt-with-print-p-872487XJHYA9097" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1778867127/872487_XJHYA_1072_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey T-shirt with print</h3>
+<p class="price">$720</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/cotton-jersey-t-shirt-with-print-p-872487XJHYA1072" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1778087703/864626_XJH2O_9066_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey T-shirt with print</h3>
+<p class="price">$650</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/cotton-jersey-t-shirt-with-print-p-864626XJH2O9066" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1776274216/864626_XJH2O_1152_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey T-shirt with print</h3>
+<p class="price">$650</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/cotton-jersey-t-shirt-with-print-p-864626XJH2O1152" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1767033072/864626_XJHUF_1152_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New silk blend jersey T-shirt with print</h3>
+<p class="price">$650</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/silk-blend-jersey-t-shirt-with-print-p-864626XJHUF1152" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1758011501/788024_XJHHN_6320_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New GG cotton piquet jacquard T-shirt</h3>
+<p class="price">$1,280</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/gg-cotton-piquet-jacquard-polo-shirt-p-788024XJHHN6320" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1715877965/701735_XJELJ_4437_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton piquet polo with web collar</h3>
+<p class="price">$820</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/cotton-piquet-polo-with-web-collar-p-701735XJELJ4437" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1767033079/864626_XJHUF_9280_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New silk blend jersey T-shirt</h3>
+<p class="price">$650</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/silk-blend-jersey-t-shirt-with-print-p-864626XJHUF9280" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1767033054/864620_XJHSR_1000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New GG stretch jersey T-shirt</h3>
+<p class="price">$850</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/gg-stretch-jersey-t-shirt-p-864620XJHSR1000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1767117673/867376_XJHTV_1000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New GG stretch velvet devore T-shirt</h3>
+<p class="price">$1,450</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/gg-stretch-velvet-devore-t-shirt-p-867376XJHTV1000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1767033026/862824_XJHSR_1000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New GG stretch jersey T-shirt</h3>
+<p class="price">$1,150</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/gg-stretch-jersey-t-shirt-p-862824XJHSR1000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1784567758/A007SA_XJH5L_1000_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New stretch satin jersey T-shirt</h3>
+<p class="price">$950</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/stretch-satin-jersey-t-shirt-p-A007SAXJH5L1000" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1784137517/872416_XJHX4_2401_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New GG jersey polo shirt</h3>
+<p class="price">$1,250</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/polo-shirts-for-men/gg-jersey-polo-shirt-p-872416XJHX42401" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/White_Center_0_0_150x150/1741630505/788024_XJHH7_4137_001_100_0000_Light-gg-cotton-piquet-jacquard-polo-shirt.jpg" alt="Sneaker">
+<h3>New GG cotton piquet jacquard polo shirt</h3>
+<p class="price">$1,280</p>
+<a href="https://www.gucci.com/us/en/pr/-p-788024XJHH74137" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1764178227/854394_XJHN0_3254_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New cotton jersey T-shirt with embroidery</h3>
+<p class="price">$690</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/cotton-jersey-t-shirt-with-embroidery-p-854394XJHN03254" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1709567186/784361_XJGKA_4735_001_100_0000_Light.jpg" alt="Sneaker">
+<h3>New printed cotton jersey T-shirt</h3>
+<p class="price">$650</p>
+<a href="https://www.gucci.com/us/en/pr/men/ready-to-wear-for-men/t-shirts-polo-shirts-for-men/short-sleeve-t-shirts-for-men/printed-cotton-jersey-t-shirt-p-784361XJGKA4735" class="buy-btn">Buy On Official Site</a>
+</div>
+
+</div>
+</section>
+
+
+ <!-- Product card section 2 -->
+
+<section>
+    <div class="section-title">
+       <h2>• ZARA</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/426d/039d/58a94c7b909f/e229b211e3c2/04087530250-f1/04087530250-f1.jpg?ts=1784737606426&w=290" alt="Sneaker">
+<h3>New USA 94 FIFA world cup polo shirt</h3>
+<p class="price">$59.90</p>
+<a href="https://www.zara.com/us/en/usa-94-fifa-world-cup--fifa-classics-contrast-polo-shirt-p04087530.html?v1=554475328" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/bec3/bbc0/0ae1442e9a6c/7ae59f18c94c/04087531401-f1/04087531401-f1.jpg?ts=1784737605816&w=290" alt="Sneaker">
+<h3>New USA 94 FIFA world cup polo shirt</h3>
+<p class="price">$59.90</p>
+<a href="https://www.zara.com/us/en/france-98-fifa-world-cup--fifa-classics-technical-polo-p04087531.html?v1=554475327" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/e4e9/e1d2/47ed4ab989ee/7966c2a7cfe6/04087532401-f1/04087532401-f1.jpg?ts=1784737605452&w=290" alt="Sneaker">
+<h3>New USA 94 FIFA world cup polo shirt</h3>
+<p class="price">$69.90</p>
+<a href="https://www.zara.com/us/en/england-66-fifa-world-cup--fifa-classics-technical-polo-p04087532.html?v1=545490693" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/6d08/74c6/e14642a886a2/4dcf47f28a9c/04090493800-f1/04090493800-f1.jpg?ts=1770302937903&w=290" alt="Sneaker">
+<h3>New washed knit T-shirt</h3>
+<p class="price">$18.36</p>
+<a href="https://www.zara.com/us/en/washed-knit-t-shirt-p04090493.html?v1=520647822" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/8073/bba9/11674959a2bd/06f162cc690f/04442421427-f1/04442421427-f1.jpg?ts=1772464946427&w=290" alt="Sneaker">
+<h3>New baseball polo collar T-shirt</h3>
+<p class="price">$15.96</p>
+<a href="https://www.zara.com/us/en/baseball-polo-collar-t-shirt-p04442421.html?v1=502583554" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/9f10/6281/fb9344269e6d/778231112f57/41174579251-f1/41174579251-f1.jpg?ts=1773675923875&w=250" alt="Sneaker">
+<h3>New beach sweater polo</h3>
+<p class="price">$39.90</p>
+<a href="https://www.zara.com/us/en/beach-sweater-polo-p41174579.html?v1=511914501" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/8e2f/08a5/3df8437a81fb/b399da854521/00761414251-f1/00761414251-f1.jpg?ts=1783938916961&w=290" alt="Sneaker">
+<h3>New basic contrast binding T-shirt</h3>
+<p class="price">$29.90</p>
+<a href="https://www.zara.com/us/en/basic-contrast-binding-t-shirt-p00761414.html?v1=545425916" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/ff59/a6bb/ae7f41fd9acb/3479fe7ad8a4/01887410800-f1/01887410800-f1.jpg?ts=1783939022738&w=290" alt="Sneaker">
+<h3>New basic heavyweight T-shirt</h3>
+<p class="price">$29.90</p>
+<a href="https://www.zara.com/us/en/basic-heavyweight-t-shirt--03-p01887410.html?v1=545422590" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/fc33/0392/7bc14d6999c3/d5853d9aaba9/06224304251-f1/06224304251-f1.jpg?ts=1783946036772&w=290" alt="Sneaker">
+<h3>New raglan graphic T-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/raglan-graphic-t-shirt-p06224304.html?v1=553595350" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/c9b1/f65f/bedf46608579/f6d6e8e0387d/06019401250-f1/06019401250-f1.jpg?ts=1783938896678&w=290" alt="Sneaker">
+<h3>New basic slim fit T-shirt</h3>
+<p class="price">$19.90</p>
+<a href="https://www.zara.com/us/en/basic-slim-fit-t-shirt--01-p05584401.html?v1=555528684" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/b259/b03e/62254156a2ba/42b0bafa60bd/00761414401-f1/00761414401-f1.jpg?ts=1783938919504&w=290" alt="Sneaker">
+<h3>New basic contrast binding T-shirt</h3>
+<p class="price">$29.90</p>
+<a href="https://www.zara.com/us/en/basic-contrast-binding-t-shirt-p00761414.html?v1=545425913" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/31b2/a0e9/566e4f689e1f/7995c9419016/04805314305-f1/04805314305-f1.jpg?ts=1782995624990&w=290" alt="Sneaker">
+<h3>New washed printed knit T-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/washed-printed-knit-t-shirt-p04805314.html?v1=545446933" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/1db7/6088/212f4781ae18/d73b5a44eb8c/06462410898-f1/06462410898-f1.jpg?ts=1783939047930&w=290" alt="Sneaker">
+<h3>New basic relaxed fit washed T-shirt</h3>
+<p class="price">$29.90</p>
+<a href="https://www.zara.com/us/en/basic-relaxed-fit-washed-t-shirt-p06462410.html?v1=571529518" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/8b07/ebe2/a66a4c73b9b0/15700f5f001f/04853302251-f1/04853302251-f1.jpg?ts=1784133303049&w=290" alt="Sneaker">
+<h3>New hemp-viscose heneley T-shirt</h3>
+<p class="price">$59.90</p>
+<a href="https://www.zara.com/us/en/hemp-viscose-henley-shirt-p04853302.html?v1=545494472" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/4604/bb23/3f814d5d9f0b/01d77e824b98/06224306400-f1/06224306400-f1.jpg?ts=1784133270917&w=290" alt="Sneaker">
+<h3>New washed print boxy fit T-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/boxy-fit-washed-print-t-shirt-p06224306.html?v1=572132366" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/6c64/d449/b1994e848ef4/47a5d1c1c88e/00304426800-f1/00304426800-f1.jpg?ts=1783954014372&w=290" alt="Sneaker">
+<h3>New basic regular fit knit T-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/basic-regular-fit-knit-t-shirt-p00304426.html?v1=545494643" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/5fd1/25df/874d4aacad29/d65fcc8bc473/06462410802-f1/06462410802-f1.jpg?ts=1784041706483&w=290" alt="Sneaker">
+<h3>New basic relaxed fit washed T-shirt</h3>
+<p class="price">$29.90</p>
+<a href="https://www.zara.com/us/en/basic-relaxed-fit-washed-t-shirt-p06462410.html?v1=555529994" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/b1bf/41a5/8c004873833d/ba68e8cfb7d4/04805313250-f1/04805313250-f1.jpg?ts=1782995624699&w=68" alt="Sneaker">
+<h3>New washed printed knit T-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/washed-printed-knit-t-shirt-p04805313.html?v1=545446887" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/66ed/3b44/d9264e239958/47d0eec8729d/00722337712-f1/00722337712-f1.jpg?ts=1783004831044&w=290" alt="Sneaker">
+<h3>New relaxed fit linen T-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/relaxed-fit-100-linen-t-shirt-p00722337.html?v1=551116303" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/1ecb/82c8/90e34d11bc68/cc081de524e3/00761840633-f1/00761840633-f1.jpg?ts=1783939019138&w=290" alt="Sneaker">
+<h3>New basic heavyweight T-shirt</h3>
+<p class="price">$29.90</p>
+<a href="https://www.zara.com/us/en/basic-heavyweight-t-shirt--03-p01887410.html?v1=548694137" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/6d2a/16b0/47864615b66b/8215d1a4fd52/06224301400-f1/06224301400-f1.jpg?ts=1784737527074&w=290" alt="Sneaker">
+<h3>New miami waffle knit T-shirt</h3>
+<p class="price">$59.90</p>
+<a href="https://www.zara.com/us/en/miami-waffle-knit-shirt-p06224301.html?v1=550347109" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/8112/96f9/3afa42cb981b/74315d29580f/05584431406-f1/05584431406-f1.jpg?ts=1784130974282&w=290" alt="Sneaker">
+<h3>New relaxed fit interlock T-shirt</h3>
+<p class="price">$39.90</p>
+<a href="https://www.zara.com/us/en/relaxed-fit-interlock-t-shirt--04-p05584471.html?v1=545425836" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/0341/2ad7/09044803a14d/f17c9ec2ae2e/01887411060-f1/01887411060-f1.jpg?ts=1783938899563&w=290" alt="Sneaker">
+<h3>New basic medium weight T-shirt</h3>
+<p class="price">$29.90</p>
+<a href=https://www.zara.com/us/en/basic-medium-weight-t-shirt--02-p01887411.html?v1=545425949"" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/1849/6e14/b8d24cc6bbb8/1740f7e66ff4/04092355800-f1/04092355800-f1.jpg?ts=1783946010991&w=290" alt="Sneaker">
+<h3>New regular fit henley T-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/regular-fit-henley-t-shirt-p04092355.html?v1=549173947" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/0441/eb74/e6384070a21a/953cbcd3d748/00304426712-f1/00304426712-f1.jpg?ts=1783954014128&w=290" alt="Sneaker">
+<h3>New basic regular fit knit t-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/basic-regular-fit-knit-t-shirt-p00304426.html?v1=545494642" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/343e/ef03/9ce541c9ba1f/a75f6c26cefd/03992430800-f1/03992430800-f1.jpg?ts=1783939039185&w=290" alt="Sneaker">
+<h3>New relaxed fit textured T-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/relaxed-fit-textured-t-shirt-p03992430.html?v1=545425966" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/b17f/257a/cf844e45ba68/16fc0dade992/04087319615-f1/04087319615-f1.jpg?ts=1784532931947&w=290" alt="Sneaker">
+<h3>New relaxed fit embroidered T-shirt</h3>
+<p class="price">$39.90</p>
+<a href="https://www.zara.com/us/en/contrast-embroidered-relaxed-fit-t-shirt-p04087319.html?v1=552968175" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/7709/0f90/d0814ef6b104/14a69f17aa9e/03665303250-f1/03665303250-f1.jpg?ts=1784546317836&w=290" alt="Sneaker">
+<h3>New relaxed fit combination graphic T-shirt</h3>
+<p class="price">$39.90</p>
+<a href="https://www.zara.com/us/en/combination-graphic-relaxed-fit-t-shirt-p03665303.html?v1=545470575" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/5528/b812/77da4639b586/8598c085d712/03665304712-f1/03665304712-f1.jpg?ts=1784546320716&w=290" alt="Sneaker">
+<h3>New combination embroidery textured T-shirt</h3>
+<p class="price">$45.90</p>
+<a href="https://www.zara.com/us/en/combination-embroidered-textured-tank-top-p03665304.html?v1=545470584" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://static.zara.net/assets/public/a8ac/286b/c310483ab3e0/fe54f55c10bb/06224325712-f1/06224325712-f1.jpg?ts=1783350519340&w=290" alt="Sneaker">
+<h3>New basic contrast binding T-shirt</h3>
+<p class="price">$39.90</p>
+<a href="https://www.zara.com/us/en/basic-contrast-binding-t-shirt-p06224325.html?v1=551417459" class="buy-btn">Buy On Official Site</a>
+</div>
+
+</div>
+</section>
+
+
+ <!-- Product card section 3 -->
+
+<section>
+    <div class="section-title">
+       <h2>• H&M</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/79/5e/795ea04e15bf26b9381d815e6337f6c755f60ddb.jpg?imwidth=657" alt="Sneaker">
+<h3>New Loose-Fit Printed T-Shirt</h3>
+<p class="price">$24.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1262292029.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/48/bf/48bf51c779bd92292be7b0912e15cee82d74687a.jpg?imwidth=657" alt="Sneaker">
+<h3>New Loose-Fit Printed T-Shirt</h3>
+<p class="price">$12.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1262292019.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/3b/33/3b3329bd93eac50bd9aee73b11ba5d9f6d2d6d8a.jpg?imwidth=657" alt="Sneaker">
+<h3>New Loose-Fit Printed T-Shirt</h3>
+<p class="price">$24.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1262292036.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/18/a7/18a7c700a2a892ca1229b717fe8de9a3044601e9.jpg?imwidth=657" alt="Sneaker">
+<h3>New Loose-Fit Printed T-Shirt</h3>
+<p class="price">$24.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1262292021.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/e8/58/e8586abed70eac3639d3862b21df3dcbd68b8fe5.jpg?imwidth=657" alt="Sneaker">
+<h3>New Loose-Fit Printed T-Shirt</h3>
+<p class="price">$24.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1262292033.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/3c/81/3c81d40ce0373e307560ae2d28a068455e182749.jpg?imwidth=657" alt="Sneaker">
+<h3>New relaxed-fit printed T-shirt</h3>
+<p class="price">$12.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1344928006.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/76/cf/76cfa58ffe761d071ca2ef76c41c6daef3c4e689.jpg?imwidth=657" alt="Sneaker">
+<h3>New relaxed-fit printed T-shirt</h3>
+<p class="price">$12.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1344928004.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/cb/79/cb795f5aa98295d755197ccdc41080f81bcf7adc.jpg?imwidth=657" alt="Sneaker">
+<h3>New relaxed-fit printed T-shirt</h3>
+<p class="price">$12.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1344928012.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/88/88/8888d9f35357ac6e405eb958688d00527885881c.jpg?imwidth=128" alt="Sneaker">
+<h3>New slim-fit waffle-knit polo shirt</h3>
+<p class="price">$24.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1343188003.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/68/c1/68c11fed8b753a76d0f499ad5d20aa6916bd955a.jpg?imwidth=128" alt="Sneaker">
+<h3>New loose-fit cotton rugby shirt</h3>
+<p class="price">$39.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1333561003.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/ea/11/ea1194480272ee4450c0204856d54b1f4f11112d.jpg?imwidth=128" alt="Sneaker">
+<h3>New regular polo shirt</h3>
+<p class="price">$29.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341526005.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/51/c6/51c6b0a61848362050a0c5e6c9c41f59e9185143.jpg?imwidth=128" alt="Sneaker">
+<h3>New regular polo shirt</h3>
+<p class="price">$39.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1344634002.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/b6/2d/b62d6e8306cab0e8730b82195ecbed8f20acfd52.jpg?imwidth=128" alt="Sneaker">
+<h3>New regular polo shirt</h3>
+<p class="price">$44.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1348311004.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/f8/5f/f85f6885b9918e9c4a1dc346c17f0daa1105a294.jpg?imwidth=128" alt="Sneaker">
+<h3>New coolmax slim-fit polo shirt</h3>
+<p class="price">$19.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1331766010.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/59/1e/591e5c731bc3d6178964a133c653a579858bee70.jpg?imwidth=128" alt="Sneaker">
+<h3>New loose-fit cotton rugby shirt</h3>
+<p class="price">$39.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1333561004.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/99/fc/99fc707d28dc7319ba890fcaac2bcffc7105b872.jpg?imwidth=128" alt="Sneaker">
+<h3>New regular-fit knit polo shirt</h3>
+<p class="price">$44.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341622004.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/66/d6/66d65ff6187afd627612506e6edad89d4a42053d.jpg?imwidth=128" alt="Sneaker">
+<h3>New relaxed-fit polo shirt</h3>
+<p class="price">$39.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1344634001.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/60/2e/602ef675ed83194153bcb62bee55c8c3150eef7a.jpg?imwidth=128" alt="Sneaker">
+<h3>New regular-fit knit polo shirt</h3>
+<p class="price">$44.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341622002.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/c1/f5/c1f5b2af449eee5bd000d2bc29ae9548bfe57b0e.jpg?imwidth=128" alt="Sneaker">
+<h3>New oversized washed-look polo shirt</h3>
+<p class="price">$39.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1353195001.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/bc/62/bc62ad74649a1fa384e3716b51afb7f8e3b619fd.jpg?imwidth=128" alt="Sneaker">
+<h3>New slim-fit textured knit polo shirt</h3>
+<p class="price">$49.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1353406004.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/08/af/08af3061ddc793c3c12663634edabbc39a54a8f4.jpg?imwidth=128" alt="Sneaker">
+<h3>regular fit knit polo shirt</h3>
+<p class="price">$39.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341527001.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/5f/50/5f50512ba2bee973153224d38fd8252f60148c84.jpg?imwidth=128" alt="Sneaker">
+<h3>New regular-fit knit polo shirt</h3>
+<p class="price">$44.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341622003.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/9d/bf/9dbf59be919df1b6d9c2c5feed1a5efdb2b1b644.jpg?imwidth=128" alt="Sneaker">
+<h3>New slim-fit polo shirt</h3>
+<p class="price">$44.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341620001.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/f3/41/f341e0d0e6efa254ae6ba6fb60f93fe2410c3fce.jpg?imwidth=128" alt="Sneaker">
+<h3>New Slim-Fit Textured-Knit Polo Shirt</h3>
+<p class="price">$49.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1353406002.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/93/23/9323cc717da9465ea9c3d00771c6b92f34818037.jpg?imwidth=128" alt="Sneaker">
+<h3>New slim-fit polo shirt</h3>
+<p class="price">$39.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341527002.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/96/c9/96c96de94cfe1549b5a6246f07ca1e9c36b53512.jpg?imwidth=128" alt="Sneaker">
+<h3>New slim-fit polo shirt</h3>
+<p class="price">$44.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341620004.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/7c/09/7c09f05b105c82fd4fb65aeea0c04c159adf8c04.jpg?imwidth=128" alt="Sneaker">
+<h3>New regular-fit knit polo shirt</h3>
+<p class="price">$44.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341622001.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/40/01/4001dd9e42dde909917f3f276db25dea187e0fe1.jpg?imwidth=128" alt="Sneaker">
+<h3>New slim-fit polo shirt</h3>
+<p class="price">$44.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1341620003.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/c0/9c/c09cfe112bf0318408cfa2d6b3349a4c522f314a.jpg?imwidth=128" alt="Sneaker">
+<h3>New regular-fit knit polo shirt</h3>
+<p class="price">$44.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1352373004.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://image.hm.com/assets/hm/d5/08/d508df7b91d8d5b6555ff6881e666914ae08f5d2.jpg?imwidth=128" alt="Sneaker">
+<h3>New regular-fit knit polo shirt</h3>
+<p class="price">$49.99</p>
+<a href="https://www2.hm.com/en_us/productpage.1353406001.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+</div>
+</section>
+ <!-- Product card section 4 -->
+
+<section>
+    <div class="section-title">
+       <h2>• PRADA</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UMF/UMF146/18DYF0154/UMF146_18DY_F0154_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New superfine wool crew-neck sweater</h3>
+<p class="price">$1,080</p>
+<a href="https://www.prada.com/ww/en/p/superfine-wool-crew-neck-sweater/UMF146_18DY_F0154_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN444/XGSF0002/UJN444_XGS_F0002_S_WEO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New pique polo shirt</h3>
+<p class="price">$795</p>
+<a href="https://www.prada.com/us/en/p/pique-polo-shirt/UJN444_XGS_F0002_S_WEO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/S/SJN/SJN289/10YXF0009/SJN289_10YX_F0009_S_221_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New pique polo shirt</h3>
+<p class="price">$1,720</p>
+<a href="https://www.prada.com/us/en/p/pique-polo-shirt/SJN289_10YX_F0009_S_221" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN444/XGSF0124/UJN444_XGS_F0124_S_WEO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New pique polo shirt</h3>
+<p class="price">$795</p>
+<a href="https://www.prada.com/us/en/p/pique-polo-shirt/UJN444_XGS_F0124_S_WEO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradanux_products/U/UJN/UJN444/XGSF0009/UJN444_XGS_F0009_S_181_SLF.png/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New pique polo shirt</h3>
+<p class="price">$795</p>
+<a href="https://www.prada.com/us/en/p/pique-polo-shirt/UJN444_XGS_F0009_S_181" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN444/XGSF0002/UJN444_XGS_F0002_S_WM3_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New pique polo shirt</h3>
+<p class="price">$1,070</p>
+<a href="https://www.prada.com/us/en/p/pique-polo-shirt/UJN444_1867_F0002_S_WM3" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN954/240F0002/UJN954_240_F0002_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,250</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN954_240_F0002_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJL/UJL73B/11CDF0P40/UJL73B_11CD_F0P40_S_WM1_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New long sleeved cotton T-shirt</h3>
+<p class="price">$1,350</p>
+<a href="https://www.prada.com/us/en/p/long-sleeved-cotton-t-shirt/UJL73B_11CD_F0P40_S_WM1" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN912/11CDF0P40/UJN912_11CD_F0P40_S_WM1_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,220</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN912_11CD_F0P40_S_WM1" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN912/11CDF0192/UJN912_11CD_F0192_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,070</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN912_11CD_F0192_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradanux_products/U/UJN/UJN712/1YDPF0124/UJN712_1YDP_F0124_S_211_SLF.png/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New stretch cotton T-shirt</h3>
+<p class="price">$1,070</p>
+<a href="https://www.prada.com/us/en/p/stretch-cotton-t-shirt/UJN712_1YDP_F0124_S_211" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN986/187BF0089/UJN986_187B_F0089_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,290</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN986_187B_F0089_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN861/240F0AFC/UJN861_240_F0AFC_S_232_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,250</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN861_240_F0AFC_S_232" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN861/240F0008/UJN861_240_F0008_S_232_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,250</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN861_240_F0008_S_232" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN912/11CDF0RXG/UJN912_11CD_F0RXG_S_WM1_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,220</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN912_11CD_F0RXG_S_WM1" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN04A/195BF0K74/UJN04A_195B_F0K74_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,420</p>
+<a href="https://www.prada.com/us/en/p/short-sleeved-cotton-t-shirt/UJN04A_195B_F0K74_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN974/1859F0970/UJN974_1859_F0970_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt with print</h3>
+<p class="price">$1,420</p>
+<a href="https://www.prada.com/us/en/p/printed-cotton-t-shirt/UJN974_1859_F0970_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN912/11CDF057L/UJN912_11CD_F057L_S_WMO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,070</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN912_11CD_F057L_S_WMO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN912/11CDF095J/UJN912_11CD_F095J_S_WMO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,070</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN912_11CD_F095J_S_WMO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN661/11CKF0009/UJN661_11CK_F0009_S_221_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>Re-nylon and jersey T-shirt</h3>
+<p class="price">$995</p>
+<a href="https://www.prada.com/us/en/p/re-nylon-and-jersey-t-shirt/UJN661_11CK_F0009_S_221" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN964/17Z3F0112/UJN964_17Z3_F0112_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New shapeable cotton T-shirt</h3>
+<p class="price">$1,590</p>
+<a href="https://www.prada.com/us/en/p/shapeable-cotton-t-shirt/UJN964_17Z3_F0112_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN983/19BDF03DP/UJN983_19BD_F03DP_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New striped cotton T-shirt</h3>
+<p class="price">$1,990</p>
+<a href="https://www.prada.com/us/en/p/striped-cotton-t-shirt/UJN983_19BD_F03DP_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN999/196FF0009/UJN999_196F_F0009_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$825</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN999_196F_F0009_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN912/11CDF0065/UJN912_11CD_F0065_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$1,070</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN912_11CD_F0065_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UMF/UMF019/169CF0036/UMF019_169C_F0036_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New oversized chasmere T-shirt</h3>
+<p class="price">$2,850</p>
+<a href="https://www.prada.com/us/en/p/oversized-cashmere-t-shirt/UMF019_169C_F0036_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN988/19ESF0HP6/UJN988_19ES_F0HP6_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New printed cotton T-shirt</h3>
+<p class="price">$1,590</p>
+<a href="https://www.prada.com/us/en/p/printed-cotton-t-shirt/UJN988_19ES_F0HP6_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradanux_products/U/UJM/UJM492/ILKF0002/UJM492_ILK_F0002_S_221_SLF.png/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cotton T-shirts - three pack</h3>
+<p class="price">$925</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirts-three-pack/UJM492_ILK_F0002_S_221" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJN/UJN861/11CLF0031/UJN861_11CL_F0031_S_232_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New cottton T-shirt</h3>
+<p class="price">$1,250</p>
+<a href="https://www.prada.com/us/en/p/cotton-t-shirt/UJN861_11CL_F0031_S_232" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UJL/UJL73B/11CDF0967/UJL73B_11CD_F0967_S_WMO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New long sleeved cotton T-shirt</h3>
+<p class="price">$1,200</p>
+<a href="https://www.prada.com/us/en/p/long-sleeved-cotton-t-shirt/UJL73B_11CD_F0967_S_WMO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://www.prada.com/content/dam/pradabkg_products/U/UMF/UMF435/198TF0080/UMF435_198T_F0080_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.600.600.jpg" alt="Sneaker">
+<h3>New shetland wool crew-neck sweater</h3>
+<p class="price">$2,300</p>
+<a href="https://www.prada.com/us/en/p/shetland-wool-crew-neck-sweater/UMF435_198T_F0080_S_OOO" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+</div>
+</section>
+ <!-- Product card section 1 -->
+
+<section>
+    <div class="section-title">
+       <h2>• MANGO</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27051281-50-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Micro-structured cotton polo shirt</h3>
+<p class="price">$ 39.99</p>
+<a href="https://shop.mango.com/us/en/p/men/sweaters-and-cardigans/polos/micro-structured-cotton-polo-shirt/27051281/50/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27085936-66-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Combined 100% cotton knit polo</h3>
+<p class="price">$ 45.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/combined-100-cotton-knit-polo/27085936/66/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27009211-26-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% cotton fine-knit polo shirt</h3>
+<p class="price">$ 59.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/long-sleeve/100-cotton-fine-knit-polo-shirt/27009211/26/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37022900-99-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% cotton knitted polo structure</h3>
+<p class="price">$ 69.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/short-sleeve/100-cotton-knitted-polo-structure/37022900/99/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37022900-02-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% cotton knitted polo structure</h3>
+<p class="price">$ 69.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/short-sleeve/100-cotton-knitted-polo-structure/37022900/02/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37091435-02-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% cotton knitted polo structure</h3>
+<p class="price">$ 59.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/fine-knit-100-cotton-polo/37091435/02/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37022900-08-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% cotton knitted polo structure</h3>
+<p class="price">$ 69.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/short-sleeve/100-cotton-knitted-polo-structure/37022900/08/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27051283-99-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% merino wool polo jumper</h3>
+<p class="price">$ 45.99</p>
+<a href="https://shop.mango.com/us/en/p/men/sweaters-and-cardigans/polos/100-merino-wool-polo-jumper/27051283/99/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27064428-97-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Comfort stretch zip polo</h3>
+<p class="price">$ 45.99</p>
+<a href="https://media.mango.com/is/image/punto/27064428-97-900?wid=368&hei=515&fit=crop" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27051281-56-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Micro-structured cotton polo shirt</h3>
+<p class="price">$ 39.99</p>
+<a href="https://shop.mango.com/us/en/p/men/sweaters-and-cardigans/polos/micro-structured-cotton-polo-shirt/27051281/56/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27024426-01-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Comfort-stretch piqué Coolmax® polo</h3>
+<p class="price">$ 39.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/pique/comfort-stretch-pique-coolmax-polo/27024426/01/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37012902-48-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Ribbed linen lyocell blend polo</h3>
+<p class="price">$ 89.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/ribbed-linen-lyocell-blend-polo/37012902/48/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27024426-51-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Comfort-stretch piqué Coolmax® polo</h3>
+<p class="price">$ 39.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/pique/comfort-stretch-pique-coolmax-polo/27024426/51/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27055939-50-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Structured fine-knit polo shirt</h3>
+<p class="price">$ 45.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/structured-fine-knit-polo-shirt/27055939/50/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27027918-56-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Contrasting knitted polo shirt</h3>
+<p class="price">$ 59.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/short-sleeve/contrasting-knitted-polo-shirt/27027918/56/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37071436-56-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Knitted polo shirt with zip </h3>
+<p class="price">$ 79.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/knitted-polo-shirt-with-zip/37071436/56/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37091435-45-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Fine-knit 100% cotton polo</h3>
+<p class="price">$ 59.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/fine-knit-100-cotton-polo/37091435/45/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27051282-08-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Cotton-blend ribbed polo sweater</h3>
+<p class="price">$ 25.99</p>
+<a href="https://shop.mango.com/us/en/p/men/sweaters-and-cardigans/polos/cotton-blend-ribbed-polo-sweater/27051282/08/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37091435-57-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Fine-knit 100% cotton polo</h3>
+<p class="price">$ 59.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/fine-knit-100-cotton-polo/37091435/57/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37041437-07-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Ribbed cotton-linen-blend polo</h3>
+<p class="price">$ 69.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/short-sleeve/ribbed-cotton-linen-blend-polo/37041437/07/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27027918-70-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Contrasting knitted polo shirt</h3>
+<p class="price">$ 59.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/short-sleeve/contrasting-knitted-polo-shirt/27027918/70/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27045941-07-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Contrast trim cotton polo shirt</h3>
+<p class="price">$ 29.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/contrast-trim-cotton-polo-shirt/27045941/07/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27009210-27-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Cotton polo shirt with microstructure</h3>
+<p class="price">$ 45.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/short-sleeve/cotton-polo-shirt-with-microstructure/27009210/27/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37001441-44-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% cotton polo with braided structure</h3>
+<p class="price">$ 69.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/100-cotton-polo-with-braided-structure/37001441/44/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27071324-56-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Knitted structured polo sweater</h3>
+<p class="price">$ 35.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/long-sleeve/knitted-structured-polo-sweater/27071324/56/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37022900-11-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% cotton knitted polo structure</h3>
+<p class="price">$ 69.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/short-sleeve/100-cotton-knitted-polo-structure/37022900/11/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/37022900-89-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% cotton knitted polo structure</h3>
+<p class="price">$ 69.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/short-sleeve/100-cotton-knitted-polo-structure/37022900/89/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27045942-56-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Striped linen-blend polo</h3>
+<p class="price">$ 39.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/striped-linen-blend-polo/27045942/56/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/17097766-54-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New Cotton piqué polo shirt</h3>
+<p class="price">$ 25.99</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/pique/cotton-pique-polo-shirt/17097766/54/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://media.mango.com/is/image/punto/27019209-54-900?wid=368&hei=515&fit=crop" alt="Sneaker">
+<h3>New 100% cotton fine-knit polo shirt</h3>
+<p class="price">$ 69.90</p>
+<a href="https://shop.mango.com/us/en/p/men/polos/knitwear/100-cotton-fine-knit-polo-shirt/27019209/54/00" class="buy-btn">Buy On Official Site</a>
+</div>
+
+</div>
+</section>
+ <!-- Product card section 1 -->
+
+<section>
+    <div class="section-title">
+       <h2>• Louis vuitton</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-denim-signature-short-sleeved-t-shirt--HVY22WNPG002_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New denim signature T-shirt</h3>
+<p class="price">$1,390</p>
+<a href="https://us.louisvuitton.com/eng-us/products/denim-signature-t-shirt-nvprod7590075v/1AK7H1" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-monogram-pique-t-shirt--HUY48WTCL002_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New monogram pique T-shirt</h3>
+<p class="price">$1,120</p>
+<a href="https://us.louisvuitton.com/eng-us/products/monogram-pique-t-shirt-nvprod7220282v/1AJVS5" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embossed-lv-t-shirt--HNY55WD3H753_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New embossed LV T-shirt</h3>
+<p class="price">$745</p>
+<a href="https://us.louisvuitton.com/eng-us/products/embossed-lv-t-shirt-nvprod7850024v/1AKLKQ" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-signature-short-sleeved-t-shirt--HVY19WNPG900_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New signature T-shirt with embroidery</h3>
+<p class="price">$1,390</p>
+<a href="https://us.louisvuitton.com/eng-us/products/embroidered-signature-t-shirt-nvprod7590073v/1AK7G5" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-monogram-pique-t-shirt--HUY48WTCL167_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New monogram pique T-shirt</h3>
+<p class="price">$1,120</p>
+<a href="https://us.louisvuitton.com/eng-us/products/monogram-pique-t-shirt-nvprod7220282v/1AK6IQ" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-gradient-signature-flock-print-t-shirt--HVY46WNPG63J_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New gradient signature flock print T-shirt</h3>
+<p class="price">$1,390</p>
+<a href="https://us.louisvuitton.com/eng-us/products/flock-print-monogram-gradient-t-shirt-nvprod7540084v/1AK7LV" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-gradient-cotton-t-shirt--HQY42WFSB904_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New gradient cotton T-shirt</h3>
+<p class="price">$1,120</p>
+<a href="https://us.louisvuitton.com/eng-us/products/gradient-cotton-t-shirt-nvprod4770027v/1AFBB4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-short-sleeved-cotton-crewneck--HRN47WZ34900_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New crewneck T-shirt</h3>
+<p class="price">$1,010</p>
+<a href="https://us.louisvuitton.com/eng-us/products/short-sleeved-cotton-crewneck-nvprod5380035v/1AGKMB" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-signature-t-shirt--HVY01WSIO900_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New embroided signature T-shirt</h3>
+<p class="price">$1,390</p>
+<a href="https://us.louisvuitton.com/eng-us/products/embroidered-signature-t-shirt-nvprod7420013v/1AJRHM" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-short-sleeved-signature-t-shirt--HVY45WJC8918_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New signature T-shirt</h3>
+<p class="price">$695</p>
+<a href="https://us.louisvuitton.com/eng-us/products/short-sleeved-signature-t-shirt-nvprod7590012v/1AK7LG" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embossed-lv-t-shirt--HNY55WDT3000_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New embrossed LV T-shirt</h3>
+<p class="price">$730</p>
+<a href="https://us.louisvuitton.com/eng-us/products/embossed-lv-t-shirt-nvprod3570121v/1AA5E0" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-damier-cotton-pique-t-shirt--HRY40WJUV002_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New damier cotton pique T-shirt</h3>
+<p class="price">$835</p>
+<a href="https://us.louisvuitton.com/eng-us/products/damier-cotton-pique-t-shirt-nvprod5460089v/1AFRAC" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-short-sleeved-wool-knit-polo-shirt--HUN80WNOM367_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New wool-knit polo shirt</h3>
+<p class="price">$1,770</p>
+<a href="https://us.louisvuitton.com/eng-us/products/short-sleeved-wool-knit-polo-shirt-nvprod7220317v/1AJVY6" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-damier-signature-polo-shirt--HRY41WJUV6E5_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New damier signature polo shirt</h3>
+<p class="price">$885</p>
+<a href="https://us.louisvuitton.com/eng-us/products/damier-cotton-pique-polo-nvprod5460092v/1AJQZX" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-short-sleeved-polo-shirt--HUY79WX1662U_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New polo T-shirt</h3>
+<p class="price">$1,190</p>
+<a href="https://us.louisvuitton.com/eng-us/products/short-sleeved-polo-shirt-nvprod7220337v/1AJUTR" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-striped-short-sleeved-polo-shirt---HUY04WWMR632_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New striped short-sleeved polo shirt</h3>
+<p class="price">$1,640</p>
+<a href="https://us.louisvuitton.com/eng-us/products/striped-short-sleeved-polo-shirt-nvprod6490015v/1AIKIL" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-damier-striped-long-sleeved-polo-shirt--HUY03WNPL6A1_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New damier striped long sleeved polo shirt</h3>
+<p class="price">$1,740</p>
+<a href="https://us.louisvuitton.com/eng-us/products/damier-striped-long-sleeved-polo-shirt-nvprod6490076v/1AIKBY" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-half-damier-pocket-polo--HJY41WVHI900_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>new half damier pocket polo</h3>
+<p class="price">$910</p>
+<a href="https://us.louisvuitton.com/eng-us/products/cotton-half-damier-pocket-polo-nvprod2260014v/1A8HBY" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-damier-signature-long-sleeved-polo-shirt---HTY40WJUV002_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New damier striped long sleeved polo shirt</h3>
+<p class="price">$1060</p>
+<a href="https://us.louisvuitton.com/eng-us/products/damier-signature-long-sleeved-polo-shirt-nvprod6060048v/1AGTSL" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-sun-bleached-short-sleeved-crewneck--HVN80WFNP61G_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>new sun-bleached short-sleeved crewneck</h3>
+<p class="price">$1,510</p>
+<a href="https://us.louisvuitton.com/eng-us/products/sun-bleached-short-sleeved-crewneck-nvprod7870039v/1AKON2" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-knitted-mesh-short-sleeved-crewneck--HVN75WVW161G_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New knitted mesh short sleeved crewneck</h3>
+<p class="price">$1,390</p>
+<a href="https://us.louisvuitton.com/eng-us/products/knitted-mesh-short-sleeved-crewneck-nvprod7870037v/1AKOVA" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-stripy-cable-knit-polo-shirt---HVN71WAUR531_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New stripy cable-knit polo shirt</h3>
+<p class="price">$1,640</p>
+<a href="https://us.louisvuitton.com/eng-us/products/stripy-cable-knit-polo-shirt-nvprod7870034v/1AKO33" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-tweedy-jacquard-crewneck--HVN61WD1K4M8_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New tweeedy jacquard crewneck</h3>
+<p class="price">$2,280</p>
+<a href="https://us.louisvuitton.com/eng-us/products/tweedy-jacquard-crewneck-nvprod7870032v/1AKOA7" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-tweedy-jacquard-check-cardigan--HVN74WD1K030_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New tweedy check cardigan</h3>
+<p class="price">$2,400</p>
+<a href="https://us.louisvuitton.com/eng-us/products/tweedy-jacquard-check-cardigan-nvprod7870036v/1AKOA2" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-hidden-monogram-short-sleeved-jacquard-crewneck--HVN77WAUR85M_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New jacquard crewneck T-shirt</h3>
+<p class="price">$1,510</p>
+<a href="https://us.louisvuitton.com/eng-us/products/hidden-monogram-short-sleeved-jacquard-crewneck-nvprod7870038v/1AKO3B" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-monogram-short-sleeved-crewneck--HVN46W7586F1_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>new monogram crewneck T-shirt</h3>
+<p class="price">$1,250</p>
+<a href="https://us.louisvuitton.com/eng-us/products/monogram-short-sleeved-crewneck-nvprod7590104v/1AK720" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-monogram-short-sleeved-crewneck--HVN36WAUR22H_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New monogram short sleeved crewneck T-shirt</h3>
+<p class="price">$1,390</p>
+<a href="https://us.louisvuitton.com/eng-us/products/monogram-short-sleeved-crewneck-nvprod7590101v/1AK70A" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-short-sleeved-signature-patch-crewneck--HVN32WAUR001_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New Short-Sleeved Signature Patch Crewneck</h3>
+<p class="price">$1,250</p>
+<a href="https://us.louisvuitton.com/eng-us/products/short-sleeved-signature-patch-crewneck-nvprod7590098v/1AK6ZE" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-short-sleeved-signature-crewneck--HVN23WZ34168_PM2_Front%20view.png?wid=490&hei=490" alt="Sneaker">
+<h3>New Short-Sleeved Signature Patch Crewneck</h3>
+<p class="price">$1,130</p>
+<a href="https://us.louisvuitton.com/eng-us/products/short-sleeved-signature-crewneck-nvprod7590096v/1AK6YV" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-knitted-patchwork-denim-short-sleeved-crewneck--HVN17W740650_PM2_Front%20view.png?wid=730&hei=730" alt="Sneaker">
+<h3>New knitted patchwork denim short sleeved crewneck</h3>
+<p class="price">$1,510</p>
+<a href="https://us.louisvuitton.com/eng-us/products/knitted-patchwork-denim-short-sleeved-crewneck-nvprod7590044v/1AK6XY" class="buy-btn">Buy On Official Site</a>
+</div>
+
+</div>
+</section>
+ <!-- Product card section 1 -->
+
+<section>
+    <div class="section-title">
+       <h2>• Calvin Klein</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG873G_YAS_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New striped logo easy tee</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/striped-logo-easy-tee/4RG873G-YAS.html?journey=Tier_0000004" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG877G_YAS_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New embroided calligraphy easy tee</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/embroidered-calligraphy-easy-tee/4RG877G-YAS.html?journey=Tier_0000004" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RF316G_YAS_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New smooth cotton waffle sweater polo shirt</h3>
+<p class="price">$59.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tops/smooth-cotton-waffle-sweater-polo-shirt/4RF316G-YAS.html?journey=Tier_0000004" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4LG304G_LDY_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New ribbed sweater polo shirt</h3>
+<p class="price">$71.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tops/ribbed-sweater-polo-shirt/4LG304G-LDY.html?journey=Tier_0000004" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG832G_LH1_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New acid wash monologo T-shirt</h3>
+<p class="price">$35.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/acid-wash-monologo-tee/4RG832G-LH1.html?journey=Folder_0000032" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG832G_CG1_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New acid wash monologo T-shirt</h3>
+<p class="price">$35.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/acid-wash-monologo-tee/4RG832G-CG1.html?journey=Folder_59703383" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG877G_YAS_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New embroidered calligraphy easy T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/embroidered-calligraphy-easy-tee/4RG877G-YAS.html?journey=Tier_0000004" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG877G_UB1_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New embroidered calligraphy easy T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/embroidered-calligraphy-easy-tee/4RG877G-UB1.html?journey=best-sellers" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/40HM229_UB1_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Monogram logo relaxed T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/monogram-logo-relaxed-crewneck-t-shirt/40HM229-UB1.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/40HM229_YAF_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Monogram logo relaxed T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/monogram-logo-relaxed-crewneck-t-shirt/40HM229-YAF.html?journey=Folder_0000029" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG873G_CEC_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New striped logo T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/striped-logo-easy-tee/4RG873G-CEC.html?journey=Folder_20665196" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RB861G_UB1_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Monologo T-shirt</h3>
+<p class="price">$27.00</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/monologo-tee/4RB861G-UB1.html?journey=Folder_20665196" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RB862G_YAA_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Monologo T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/monologo-tee/4RB862G-YAA.html?journey=transitional-layers" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG226G_CEF_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New monogram stripe relaxed T-shirt</h3>
+<p class="price">$35.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/monogram-stripe-relaxed-t-shirt/4RG226G-CEF.html?journey=Folder_59703383" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG226G_8ZU_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New monogram stripe relaxed T-shirt</h3>
+<p class="price">$35.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/monogram-stripe-relaxed-t-shirt/4RG226G-8ZU.html?journey=Folder_59703383" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/40BC421_UB1_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New pique contrast pipingT-shirt</h3>
+<p class="price">$45.50</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/pique-contrast-piping-tee/40BC421-UB1.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/40BC421_YAF_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New pique contrast pipingT-shirt</h3>
+<p class="price">$45.50</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/pique-contrast-piping-tee/40BC421-YAF.html?journey=Tier_0000004" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG832G_XL7_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New acid wash monologo T-shirt</h3>
+<p class="price">$35.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/acid-wash-monologo-tee/4RG832G-XL7.html?journey=Tier_0000024" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG832G_UB1_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New acid wash monologo T-shirt</h3>
+<p class="price">$35.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/acid-wash-monologo-tee/4RG832G-UB1.html?journey=Folder_59703383" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/40BC238_UB1_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New liquid touck crewneck T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/liquid-touch-crewneck-t-shirt/40BC238-UB1.html?journey=Tier_0000004" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/40BC238_YAF_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New liquid touck crewneck T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/liquid-touch-crewneck-t-shirt/40BC238-YAF.html?journey=men" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RG236G_XL7_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Logo graphic stripe relaxed T-shirt</h3>
+<p class="price">$35.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/logo-graphic-stripe-relaxed-t-shirt/4RG236G-XL7.html?journey=Folder_20665196" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/40EM286_P7E_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Monologo Tee</h3>
+<p class="price">$27.00</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/monologo-tee/40EM286-P7E.html?journey=tees-men" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RB861G_YAA_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Monologo Tee</h3>
+<p class="price">$27.00</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/monologo-tee/4RB861G-YAA.html?journey=Folder_20665196" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RC275G_2E4_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New embroidered monogram T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/embroidered-monogram-relaxed-t-shirt/4RC275G-2E4.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RC275G_2EZ_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New embroidered monogram T-shirt</h3>
+<p class="price">$29.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/embroidered-monogram-relaxed-t-shirt/4RC275G-2EZ.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RB012G_CEF_main" alt="Sneaker">
+<h3>New cotton pique classic polo shirt</h3>
+<p class="price">$44.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tops/cotton-pique-classic-polo-shirt-/4RB012G-CEF.html?searchRedirect=true" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/40EM269_PP1_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New cotton pique classic polo shirt</h3>
+<p class="price">$47.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tops/cotton-pique-classic-polo-shirt/40EM269-PP1.html?rec=RECO_SF_ymal_PDP_4RB012G" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4RC242G_6PU_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New cooloing pique logo graphic polo shirt</h3>
+<p class="price">$41.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tshirts-tanks/cooling-pique-logo-graphic-relaxed-t-shirt/4RC242G-6PU.html?rec=RECO_SF_ymal_PDP_4RB012G" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://calvinklein.scene7.com/is/image/CalvinKlein/4LC220G_WRB_main?wid=352&hei=464&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New cotton blend pique classic polo shirt</h3>
+<p class="price">$59.40</p>
+<a href="https://www.calvinklein.us/en/men/apparel/tops/cotton-blend-pique-classic-polo-shirt/4LC220G-WRB.html?rec=RECO_SF_mlt_PDP_4RB012G" class="buy-btn">Buy On Official Site</a>
+</div>
+
+</div>
+</section>
+ <!-- Product card section 1 -->
+
+<section>
+    <div class="section-title">
+       <h2>• Armani</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1773932341/8NST62_SJP4Z_UBSG_F_SS2026.jpg" alt="Sneaker">
+<h3>Jersey t-shirt in stretch viscose with a crew neck Icon</h3>
+<p class="price">$395</p>
+<a href="https://www.armani.com/en-us/giorgio-armani/jersey-t-shirt-in-stretch-viscose-with-a-crew-neck-icon-cod-8NST62-SJP4Z-UBSG/?_gl=1*1xbry6p*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1771618999/XM002778_AF10356_FB440_F_SS2026.jpg" alt="Sneaker">
+<h3>New regualar fit T-shirt</h3>
+<p class="price">$42</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-t-shirt-in-classic-cotton-jersey-cod-XM002778-AF10356-FB440/?_gl=1*1zafb8*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1749838334/8NZTCJ_Z8H4Z_1200_F_FW2025.jpg" alt="Sneaker">
+<h3>New slim fit jersey T-shirt</h3>
+<p class="price">$55</p>
+<a href="https://www.armani.com/en-us/armani-exchange/slim-fit-jersey-t-shirt-with-logo-cod-8NZTCJ-Z8H4Z-1200/?_gl=1*mwgdrr*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1764875457/XM002778_AF10356_F1166_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular fit T-shirt in classic style</h3>
+<p class="price">$42</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-t-shirt-in-classic-cotton-jersey-cod-XM002778-AF10356-F1166/?_gl=1*9cciy7*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1776368005/XM001285_AF12481_UC001_F_FW2026.jpg" alt="Sneaker">
+<h3>New slim fit cotton piquet polo shirt</h3>
+<p class="price">$85</p>
+<a href="https://www.armani.com/en-us/armani-exchange/slim-fit-cotton-piquet-polo-shirt-with-piping-essential-cod-XM001285-AF12481-UC001/?_gl=1*w6yfdo*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1776366820/8NZTCK_Z8H4Z_1200_F_FW2026.jpg" alt="Sneaker">
+<h3>New slim fit t-shirt</h3>
+<p class="price">$55</p>
+<a href="https://www.armani.com/en-us/armani-exchange/slim-fit-t-shirt-essential-cotton-jersey-cod-8NZTCK-Z8H4Z-1200/?_gl=1*w6yfdo*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1771618506/XM002455_AF10358_U0009_F_SS2026.jpg" alt="Sneaker">
+<h3>New slim fit cotton T-shirt</h3>
+<p class="price">$39</p>
+<a href="https://www.armani.com/en-us/armani-exchange/slim-fit-cotton-t-shirt-cod-XM002455-AF10358-U0009/?_gl=1*12k6ydl*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1758650760/XM002826_AF12308_UC001_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular fit jersey T-shirt</h3>
+<p class="price">$39</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-jersey-t-shirt-with-metal-logo-cod-XM002826-AF12308-UC001/?_gl=1*1pyqaey*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1768591104/XM002777_AF10356_U8097_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular fit jersey T-shirt</h3>
+<p class="price">$51</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-t-shirt-in-cotton-jersey-cod-XM002777-AF10356-U8097/?_gl=1*u5qr7d*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1769800608/XM002784_AF10356_U8144_F_SS2026.jpg" alt="Sneaker">
+<h3>New slim-fit classic T-shirt</h3>
+<p class="price">$36</p>
+<a href="https://www.armani.com/en-us/armani-exchange/slim-fit-t-shirt-in-classic-cotton-jersey-cod-XM002784-AF10356-U8144/?_gl=1*fubf62*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/f_auto,q_auto:good,w_614,h_780,c_fill/v1777403395/XM003078_AF10361_UB068_F_FW2026.jpg" alt="Sneaker">
+<h3>New slim-fit classic T-shirt</h3>
+<p class="price">$75</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-t-shirt-in-cotton-jersey-cod-XM003078-AF10361-UB068?xse_prod_code=XM003078_AF10361_UB068&xse=sm_el_d9cdc77054494026818cd2284f1f7682&_gl=1*exdf30*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1758566135/XM002475_AF16283_F8190_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular fit cotton T-shirt</h3>
+<p class="price">$51</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-cotton-t-shirt-cod-XM002475-AF16283-F8190/?_gl=1*qqxa9b*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1771618285/XM002477_AF10356_U8097_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular fit cotton T-shirt with pocket</h3>
+<p class="price">$51</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-cotton-t-shirt-cod-XM002477-AF10356-U8097/?_gl=1*qqxa9b*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1776367421/8NZT74_ZJA5Z_1200_F_FW2026.jpg" alt="Sneaker">
+<h3>New slim fit T-shirt</h3>
+<p class="price">$45</p>
+<a href="https://www.armani.com/en-us/armani-exchange/slim-fit-t-shirt-in-pima-cotton-jersey-cod-8NZT74-ZJA5Z-1200/?_gl=1*1807nqy*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1774556092/XM002776_AF10356_U1074_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular fit classic T-shirt</h3>
+<p class="price">$39</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-t-shirt-in-classic-cotton-jersey-cod-XM002776-AF10356-U1074/?_gl=1*1kdpnpl*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1764098114/XM002207_AF10366_UC001_F_SS2026.jpg" alt="Sneaker">
+<h3>New cotton polo shirt with pocket</h3>
+<p class="price">$45</p>
+<a href="https://www.armani.com/en-us/armani-exchange/cotton-polo-shirt-cod-XM002207-AF10366-UC001/?_gl=1*1f2sy6p*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1782371630/XM003558_AF10356_M0409_F_FW2026.jpg" alt="Sneaker">
+<h3>New cottton T-shirt</h3>
+<p class="price">$80</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-t-shirt-in-cotton-jersey-cod-XM003558-AF10356-M0409/?_gl=1*1tyoiaq*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1778156221/XM003037_AF10356_UC001_F_FW2026.jpg" alt="Sneaker">
+<h3>New slim fit T-shirt in cotton</h3>
+<p class="price">$60</p>
+<a href="https://www.armani.com/en-us/armani-exchange/slim-fit-t-shirt-in-cotton-jersey-cod-XM003037-AF10356-UC001/?_gl=1*5cf0c7*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1764875733/XM001792_AF12308_U6107_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular fit T-shirt</h3>
+<p class="price">$39</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-t-shirt-with-contrasting-band-and-logo-cod-XM001792-AF12308-U6107/?_gl=1*jobq9w*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1777921729/XM002909_AF10337_UC001_F_FW2026.jpg" alt="Sneaker">
+<h3>New regular fit polo shirt</h3>
+<p class="price">$110</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-polo-shirt-mercerized-cotton-jersey-cod-XM002909-AF10337-UC001/?_gl=1*jobq9w*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1761765907/XM001784_AF10356_U0009_F_SS2026.jpg" alt="Sneaker">
+<h3>New slim fit jersey T-shirt</h3>
+<p class="price">$36</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-jersey-t-shirt-with-logo-cod-XM001784-AF10356-UC001/?_gl=1*1vzkybr*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1784117512/XM003022_AF10358_UC001_F_FW2026.jpg" alt="Sneaker">
+<h3>New slim fit T-shirt</h3>
+<p class="price"></p>
+<a href="https://www.armani.com/en-us/armani-exchange/slim-fit-t-shirt-cotton-jersey-cod-XM003022-AF10358-UC001/?_gl=1*su8s48*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1758564709/XM000363_AF12308_UB101_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular fit cotton T-shirt</h3>
+<p class="price">$55</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-cotton-jersey-t-shirt-with-a-logo-icon-cod-XM000363-AF12308-UB101/?_gl=1*dz0wrv*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1762369825/XM001798_AF10356_F0143_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular jersey T-shirt</h3>
+<p class="price">$36</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-jersey-t-shirt-with-allover-logo-cod-XM001798-AF10356-F0143/?_gl=1*dz0wrv*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1762370415/XM001764_AF10366_U0009_F_SS2026.jpg" alt="Sneaker">
+<h3>New regular cotton pique T-shirt</h3>
+<p class="price">$40</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-fit-cotton-pique-polo-shirt-cod-XM001764-AF10366-U0009/?_gl=1*1ks4toe*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1764875305/XM001557_AF10363_U3040_F_SS2026.jpg" alt="Sneaker">
+<h3>New polo shirt in stretch cotton</h3>
+<p class="price">$35</p>
+<a href="https://www.armani.com/en-us/armani-exchange/polo-shirt-in-stretch-cotton-with-contrast-trim-essential-cod-XM001557-AF10363-U3040/?_gl=1*16gtojx*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1768417642/XM002413_AF10361_UC001_F_SS2026.jpg" alt="Sneaker">
+<h3>New slim fit cotton T-shirt</h3>
+<p class="price">$42</p>
+<a href="https://www.armani.com/en-us/armani-exchange/slim-fit-cotton-t-shirt-cod-XM002413-AF10361-UC001/?_gl=1*1sz2ggl*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1771617140/XM002209_AF10364_U6107_F_SS2026.jpg" alt="Sneaker">
+<h3>New cotton polo shirt</h3>
+<p class="price">$57</p>
+<a href="https://www.armani.com/en-us/armani-exchange/cotton-polo-shirt-cod-XM002209-AF10364-U6107/?_gl=1*1h4vwx2*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1761851308/XM001977_AF20139_UC001_F_SS2026.jpg" alt="Sneaker">
+<h3>New zip up knit polo shirt</h3>
+<p class="price"></p>
+<a href="https://www.armani.com/en-us/armani-exchange/zip-up-knit-polo-shirt-cod-XM001977-AF20139-UC001/?_gl=1*1h4vwx2*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://assets-cf.armani.com/image/upload/f_auto,q_auto:good,w_614,h_780,c_fill/v1783365318/XM003558_AF10356_M0411_F_FW2026.jpg" alt="Sneaker">
+<h3>New regular cotton T-shirt</h3>
+<p class="price">$80</p>
+<a href="https://www.armani.com/en-us/armani-exchange/regular-t-shirt-in-cotton-jersey-cod-XM003558-AF10356-M0411/?_gl=1*i66t9v*_up*MQ..*_ga*MTAxODUxNTYzNC4xNzg0OTg2MjQ2*_ga_RQX176VHSF*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxNjMxMTE1NjA.*_ga_P16DLZRS7L*czE3ODQ5ODYyNDYkbzEkZzAkdDE3ODQ5ODYyNDYkajYwJGwwJGgxMTUwNTA1OTc4" class="buy-btn">Buy On Official Site</a>
+</div>
+
+</div>
+</section>
+ <!-- Product card section 1 -->
+
+<section>
+    <div class="section-title">
+       <h2>• TOMMY HILFIGER</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07703_X0K_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Hilfiger Arch Logo T-Shirt</h3>
+<p class="price">$13.35</p>
+<a href="https://usa.tommy.com/en/sale/mens-sale/clothing/hilfiger-arch-logo-t-shirt/XM07703-X0K.html?journey=Tier_18819388" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07333_YCF_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Regular Fit Wicking Pique Polo</h3>
+<p class="price">$29.99</p>
+<a href="https://usa.tommy.com/en/sale/mens-sale/clothing/regular-fit-wicking-pique-polo/XM07333-YCF.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43046_YBR_alternate14?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Regular Fit Script Monogram Pique Polo</h3>
+<p class="price">$44.75</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/regular-fit-script-monogram-pique-polo/MW43046-YBR.html?rec=RECO_SF_mlt_PDP_XM07333" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW41612_YBL_alternate10?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Slim Fit Smooth Cotton Interlock Polo</h3>
+<p class="price">$39.75</p>
+<a href="https://usa.tommy.com/en/sale/mens-sale/clothing/slim-fit-smooth-cotton-interlock-polo/MW41612-YBL.html?rec=RECO_SF_mlt_PDP_XM07333" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW41608_0A4_alternate10?wid=1200&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Regular Fit Embroidered Logo Terry Polo</h3>
+<p class="price">$59.50</p>
+<a href="https://usa.tommy.com/en/sale/mens-sale/clothing/regular-fit-embroidered-logo-terry-polo/MW41608-0A4.html?rec=RECO_SF_mlt_PDP_MW41612" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43376_Z00_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Regular Fit Allover Flag Logo Pique Polo</h3>
+<p class="price">$44.75</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/regular-fit-allover-flag-logo-pique-polo/MW43376-Z00.html?rec=RECO_SF_mlt_PDP_MW41608" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43291_Z00_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Classic Fit Smooth Cotton Polo</h3>
+<p class="price">$47.70</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/classic-fit-smooth-cotton-polo/MW43291-Z00.html?rec=RECO_SF_mlt_PDP_MW41608" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43274_0AA_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Classic Fit Open Placket Crepe Polo</h3>
+<p class="price">$53.70</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/classic-fit-open-placket-crepe-polo/MW43274-0AA.html?rec=RECO_SF_mlt_PDP_MW43291" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07546_YA8_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Classic Fit Colorblock Polo</h3>
+<p class="price">$50.70</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/classic-fit-colorblock-polo/XM07546-YA8.html?rec=RECO_SF_mlt_PDP_MW43291" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43267_Z00_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Regular Fit Tipped Polo</h3>
+<p class="price">$44.75</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/regular-fit-tipped-polo/MW43267-Z00.html?rec=RECO_SF_mlt_PDP_MW43291" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07695_DW5_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Relaxed Fit Hilfiger Logo Rugby Polo</h3>
+<p class="price">$53.70</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/relaxed-fit-hilfiger-logo-rugby-polo/XM07695-DW5.html?journey=Folder_19514343" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07547_DW5_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Relaxed Fit Colorblock Rugby Polo</h3>
+<p class="price">$77.40</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/relaxed-fit-colorblock-rugby-polo/XM07547-DW5.html?journey=Tier_18482838" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07644_DW5_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Regular Fit Tommy Logo Block Stripe Polo</h3>
+<p class="price">$50.70</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/regular-fit-tommy-logo-block-stripe-polo/XM07644-DW5.html?rec=RECO_SF_mlt_PDP_XM07695" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07356_DCC_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Regular Fit Nautical Flag Pique Polo</h3>
+<p class="price">$50.70</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/regular-fit-nautical-flag-pique-polo/XM07356-DCC.html?rec=RECO_SF_mlt_PDP_XM07644" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43376_DCC_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Regular Fit Allover Flag Logo Pique Polo</h3>
+<p class="price">$44.75</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/regular-fit-allover-flag-logo-pique-polo/MW43376-DCC.html?rec=RECO_SF_mlt_PDP_XM07356" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43270_DW5_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>Slim Fit Smooth Cotton Polo</h3>
+<p class="price">$44.75</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/slim-fit-smooth-cotton-polo/MW43270-DW5.html?rec=RECO_SF_mlt_PDP_XM07644" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43197_C30_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Cabana Flag Logo T-Shirt</h3>
+<p class="price">$24.75</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/cabana-flag-logo-t-shirt/MW43197-C30.html?rec=RECO_SF_pickedforyou_PDP_MW43270" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07553_1A4_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Indigo-Dyed Striped Pocket T-Shirt</h3>
+<p class="price">$19.99</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/indigo-dyed-striped-pocket-t-shirt/XM07553-1A4.html?rec=RECO_SF_mlt_PDP_MW43197" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43448_C6Z_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New nautical hilfiger logo T-shirt</h3>
+<p class="price">$29.70</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/nautical-hilfiger-logo-t-shirt/MW43448-C6Z.html?rec=RECO_SF_mlt_PDP_MW43197" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43248_AEG_alternate11?wid=1200&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Regular Fit Open-Knit Sweater Vest</h3>
+<p class="price">$79.50</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/regular-fit-open-knit-sweater-vest/MW43248-AEG.html?rec=RECO_SF_pickedforyou_PDP_MW43270" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW43942_DCC_main?wid=1200&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New York Label Short-Sleeve Sweater</h3>
+<p class="price">$83.40</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/new-york-label-short-sleeve-sweater/MW43942-DCC.html?rec=RECO_SF_mlt_PDP_MW43248" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/78JA560_P8F_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Everyday T-Shirt</h3>
+<p class="price">$17.99</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/everyday-t-shirt/78JA560-P8F.html?searchRedirect=true" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/78JA561_VLP_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Everyday T-Shirt</h3>
+<p class="price">$17.99</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/everyday-t-shirt/78JA560-VLP.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/78JA561_L0P_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Everyday T-Shirt</h3>
+<p class="price">$17.99</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/everyday-t-shirt/78JA560-L0P.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/78J6318_P8F_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Embroidered Tommy Logo T-Shirt</h3>
+<p class="price">$19.99</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/embroidered-tommy-logo-t-shirt/78J6318-P8F.html?rec=RECO_SF_mlt_PDP_78JA560" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/78J6318_BDS_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Embroidered Tommy Logo T-Shir</h3>
+<p class="price">$19.99</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/embroidered-tommy-logo-t-shirt/78J6318-BDS.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07551_L0P_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>Striped Pocket T-Shirt</h3>
+<p class="price">$19.99 </p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/striped-pocket-t-shirt/XM07551-L0P.html?rec=RECO_SF_mlt_PDP_78JA560" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07551_A1L_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Striped Pocket T-Shirt</h3>
+<p class="price">$19.99 </p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/striped-pocket-t-shirt/XM07551-A1L.html" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07456_AEY_alternate11?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Rugby Stripe T-Shirt</h3>
+<p class="price">$19.99</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/rugby-stripe-t-shirt/XM07456-AEY.html?rec=RECO_SF_mlt_PDP_XM07551" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://shoptommy.scene7.com/is/image/ShopTommy/XM07457_RBT_alternate10?wid=645&qlt=80%2C0&resMode=sharp2&op_usm=0.9%2C1.0%2C8%2C0&iccEmbed=0&fmt=webp" alt="Sneaker">
+<h3>New Flag Logo Contrast Sleeve T-Shirt</h3>
+<p class="price">$19.99</p>
+<a href="https://usa.tommy.com/en/men/clothing/tops/flag-logo-contrast-sleeve-t-shirt/XM07457-RBT.html?rec=RECO_SF_mlt_PDP_XM07456" class="buy-btn">Buy On Official Site</a>
+</div>
+
+</div>
+</section>
+ 
+ <!-- Product card section 1 -->
+
+<section>
+    <div class="section-title">
+       <h2>• Lacoste</h2>
+    </div>
+<div class="product-slider">
+
+<!-- Product 1 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw522074c1/PH9851_S5T_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Men's Classic LIGHT Piqué Polo</h3>
+<p class="price">$65.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH9851-51.html?color=S5T" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 2 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw24a3fd41/PH9851_JBK_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>Men's Classic LIGHT Piqué Polo</h3>
+<p class="price">54.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH9851-51.html?color=JBK" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 3 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw045b2e82/DH3189_001_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Ultra Dry Stretch Golf Polo</h3>
+<p class="price">$54.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/DH3189-51.html?color=001" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 4 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwcde65add/PH8184_02S_24.jpg?imwidth=220&impolicy=pctp" alt="Sneaker">
+<h3>New Men's Classic LIGHT Piqué Polo</h3>
+<p class="price">$74.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH8184-51.html?color=02S" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 5 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwb6ee6551/PH0895_3RR_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Men's Classic LIGHT Piqué Polo</h3>
+<p class="price">$61.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH0895-51.html?color=3RR" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 6 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwa9e8206f/TJ0826_132_24.jpg?imwidth=1920&impolicy=zoom" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$30.00</p>
+<a href="https://www.lacoste.com/us/lacoste/kids/baby-kids/t-shirts-tops/TJ0826.html?color=132" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 7 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwf2c90d96/TJ0826_776_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$30.00</p>
+<a href="https://www.lacoste.com/us/lacoste/kids/baby-kids/t-shirts-tops/TJ0826.html?color=776" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 8 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwc6fb38f1/TJ0826_CCA_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$30.00</p>
+<a href="https://www.lacoste.com/us/lacoste/kids/baby-kids/t-shirts-tops/TJ0826.html?color=CCA" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 9 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw3b5f12e7/TJ0826_C4X_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$30.00</p>
+<a href="https://www.lacoste.com/us/lacoste/kids/baby-kids/t-shirts-tops/TJ0826.html?color=C4X" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 10 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw1bc0d90e/TJ0826_HBP_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$30.00</p>
+<a href="https://www.lacoste.com/us/lacoste/kids/baby-kids/t-shirts-tops/TJ0826.html?color=HBP" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 11 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwae071c0e/TJ0826_031_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$30.00</p>
+<a href="https://www.lacoste.com/us/lacoste/kids/baby-kids/t-shirts-tops/TJ0826.html?color=031" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 12 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw11f96560/TJ0826_240_24.jpg?imwidth=380&impolicy=pctp"" alt="Sneaker">
+<h3>New cotton T-shirt</h3>
+<p class="price">$30.00</p>
+<a href="https://www.lacoste.com/us/lacoste/kids/baby-kids/t-shirts-tops/TJ0826.html?color=240" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 13 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw0fd0d011/PH2087_001_24.jpg?imwidth=1920&impolicy=zoom" alt="Sneaker">
+<h3>New Men's Contrast Neck Cotton Polo</h3>
+<p class="price">$80.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH2087-51.html?color=001" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 14 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw091468b1/PH5678_031_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Men's Contrast Neck Cotton Polo</h3>
+<p class="price">98.00</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH5678-51.html?color=031" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+
+<!-- Product 15 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw437448b9/DH4187_KXE_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Men's Contrast Neck Cotton Polo</h3>
+<p class="price">$115.00</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/DH4187-51.html?color=KXE" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 16  -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwa41afaf9/DH1417_8GI_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Men's Classic Fit Monogram Polo</h3>
+<p class="price">$150.00</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/DH1417-51.html?color=8GI" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 17 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw94459b12/DH2677_3LA_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Regular Fit Lacy Cotton Polo</h3>
+<p class="price">$81.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/DH2677-51.html?color=3LA" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 18 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw6007e427/L1212_001_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Regular Fit Lacy Cotton Polo</h3>
+<p class="price">$110.00</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/L1212-51.html?color=001" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 19 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwa235fe70/PH2194_001_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Classic Fit Printed Piqué Polo</h3>
+<p class="price">$114.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH2194-51.html?color=001" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+<!-- Product 20 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw202e03cc/DH5501_4I3_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Classic Fit Textured Striped Polo</h3>
+<p class="price">$81.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/DH5501-51.html?color=4I3" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 21 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw93fe24f5/DH5501_4HI_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Classic Fit Textured Striped Polo</h3>
+<p class="price">$81.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/DH5501-51.html?color=4HI" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 22 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwdaa70d92/AH1043_GE2_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Classic Fit Knitted Polo</h3>
+<p class="price">$86.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/sweaters-sweatshirts/AH1043-51.html?color=GE2" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 23 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw23c37968/AH1043_02M_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Classic Fit Knitted Polo</h3>
+<p class="price">$86.99</p>
+<a href="lacoste.com/us/lacoste/men/clothing/sweaters-sweatshirts/AH1043-51.html?color=02M" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 24 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dwd27087ca/PH5522_476_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Men's Regular Fit Paris Stretch Piqué Polo</h3>
+<p class="price">$125.00</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH5522-51.html?color=476" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 25 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw176b9882/PH5522_IXQ_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Men's Regular Fit Paris Stretch Piqué Polo</h3>
+<p class="price">$125.00</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH5522-51.html?color=IXQ" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 26 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw4511e3b2/AH2924_XFJ_24.jpg?imwidth=&impolicy=" alt="Sneaker">
+<h3>New Men's Cable Knit Wool Crew Neck Sweater</h3>
+<p class="price">$170.00</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH5522-51.html?color=IXQ" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 27 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw3193b1f6/PH9875_8XF_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Classic Fit Knitted Polo</h3>
+<p class="price">$61.99</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH9875-51.html?color=8XF" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 28 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw9f0d01f3/PH9875_001_24.jpg?imwidth=1920&impolicy=zoom" alt="Sneaker">
+<h3>New Classic Fit Knitted Polo</h3>
+<p class="price">$125.00</p>
+<a href="https://www.lacoste.com/us/sale.html?products_us_en=%7B%22query%22%3A%22men+stylish+polo+shirt+%22%7D#query=men%20stylish%20polo%20shirt%20" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 29 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw65d16fa6/PH9875_031_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Classic Fit Knitted Polo</h3>
+<p class="price">$125.00</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH9875-51.html?color=031" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+
+<!-- Product 30 -->
+<div class="product-card">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw343b09bd/PH9875_166_24.jpg?imwidth=380&impolicy=pctp" alt="Sneaker">
+<h3>New Classic Fit Knitted Polo</h3>
+<p class="price">$125.00</p>
+<a href="https://www.lacoste.com/us/lacoste/men/clothing/polos/PH9875-51.html?color=166" class="buy-btn">Buy On Official Site</a>
+</div>
+
+
+</div>
+</section>
+ 
+
+</section>
+{% endblock %}
