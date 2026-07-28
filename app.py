@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # --- डेटाबेस का सही और डायनामिक पाथ (इसे बदल दिया है) ---
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATABASE = os.path.join(BASE_DIR, "database", "rango.db") 
+DATABASE = os.path.join(BASE_DIR, "static", "database", "rango.db") 
 # ----------------------------------------------------
 
 # Database connection
