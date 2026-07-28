@@ -1,6 +1,8 @@
+import os
 import sqlite3
 
-DATABASE = "database/rango.db"
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATABASE = os.path.join(BASE_DIR, "static", "database", "rango.db")
 
 conn = sqlite3.connect(DATABASE)
 cursor = conn.cursor()
