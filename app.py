@@ -4,11 +4,41 @@ import os
 
 app = Flask(__name__)
 
-# --- आपके फ़ोल्डर स्ट्रक्चर के हिसाब से सही डेटाबेस पाथ ---
+# --- आपके फ़ोल्डर स्ट्रक्चर के हिसाब से सही डेटाबेस पाथ --
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.path.join(BASE_DIR, "static", "database", "rango.db") 
 # ----------------------------------------------------
+# --- यदि सर्वर पर फ़ोल्डर या फ़ाइल नहीं है, तो यह उसे खुद बना देगा ---
+os.makedirs(os.path.dirname(DATABASE), exist_ok=True)
 
+# यदि rango.db फ़ाइल नहीं है, तो उसे क्रिएट करके टेबल बना देगा
+def auto_init_db():
+    if not os.path.exists(DATABASE):
+        conn = sqlite3.connect(DATABASE)
+        cursor = conn.cursor()
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS products(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        category TEXT NOT NULL,
+        price TEXT,
+        image TEXT,
+        description TEXT,
+        affiliate_link TEXT
+        )""")
+        
+        # सैंपल प्रोडक्ट्स जो आपने create_database में डाले थे
+        products = [
+            ("Luxury Sneakers", "Men", "₹3999", "men_shoes.jpg", "Premium luxury footwear", "#"),
+            ("Designer Dress", "Women", "₹4999", "women_dress.jpg", "Elegant fashion collection", "#"),
+            ("Kids Premium Wear", "Kids", "₹1999", "kids_clothes.jpg", "Comfortable kids fashion", "#")
+        ]
+        cursor.executemany("INSERT INTO products (name,category,price,image,description,affiliate_link) VALUES (?,?,?,?,?,?)", products)
+        conn.commit()
+        conn.close()
+
+auto_init_db()
+# -----------------------------------------------------------------
 # Database connection
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
