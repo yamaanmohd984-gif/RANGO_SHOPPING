@@ -1,8 +1,10 @@
 import os
 import sqlite3
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATABASE = os.path.join(BASE_DIR, "static", "database", "rango.db")
+# --- फ़ोल्डर स्ट्रक्चर के हिसाब से सही पाथ (इसे अपडेट किया है) ---
+# यह बिना किसी एरर के ठीक इसी फ़ोल्डर (static/database) के अंदर rango.db बनाएगा
+DATABASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rango.db")
+# -----------------------------------------------------------
 
 conn = sqlite3.connect(DATABASE)
 cursor = conn.cursor()
@@ -32,30 +34,30 @@ message TEXT
 
 # Sample products
 products = [
-(
-"Luxury Sneakers",
-"Men",
-"₹3999",
-"men_shoes.jpg",
-"Premium luxury footwear",
-"#"
-),
-(
-"Designer Dress",
-"Women",
-"₹4999",
-"women_dress.jpg",
-"Elegant fashion collection",
-"#"
-),
-(
-"Kids Premium Wear",
-"Kids",
-"₹1999",
-"kids_clothes.jpg",
-"Comfortable kids fashion",
-"#"
-)
+    (
+        "Luxury Sneakers",
+        "Men",
+        "₹3999",
+        "men_shoes.jpg",
+        "Premium luxury footwear",
+        "#"
+    ),
+    (
+        "Designer Dress",
+        "Women",
+        "₹4999",
+        "women_dress.jpg",
+        "Elegant fashion collection",
+        "#"
+    ),
+    (
+        "Kids Premium Wear",
+        "Kids",
+        "₹1999",
+        "kids_clothes.jpg",
+        "Comfortable kids fashion",
+        "#"
+    )
 ]
 
 cursor.executemany("""
