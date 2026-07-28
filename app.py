@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, make_response
 import sqlite3
-import os  # <-- यह नया इम्पोर्ट जोड़ा है
+import os
 
 app = Flask(__name__)
 
-# --- डेटाबेस का सही और डायनामिक पाथ (इसे बदल दिया है) ---
+# --- आपके फ़ोल्डर स्ट्रक्चर के हिसाब से सही डेटाबेस पाथ ---
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.path.join(BASE_DIR, "static", "database", "rango.db") 
 # ----------------------------------------------------
@@ -19,7 +19,6 @@ def get_db_connection():
 @app.route("/")
 def home():
     conn = get_db_connection()
-    # यहाँ एरर आ रही थी क्योंकि डेटाबेस फ़ाइल सर्वर को मिल नहीं रही थी
     products = conn.execute("SELECT * FROM products LIMIT 6").fetchall()
     conn.close()
     return render_template("index.html", products=products)
