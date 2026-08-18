@@ -1,2 +1,4 @@
 user-agent: *
 Allow: /
+
+Sitemap: https://my-shop-61q8.onrender.com
