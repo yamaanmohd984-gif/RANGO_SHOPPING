@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="height=device-height,  width=device-width, initial-scale=1.0,  minimum-scale=1.0, maximum-scale=1.0,  user-scalable=no, target-densitydpi=device-dpi, viewport-fit=cover">
+    <!-- सुधार 1: पुराने व्यूपोर्ट को हटाकर इसे पूरी तरह मोबाइल-फ्रेंडली बनाया (गूगल रैंकिंग के लिए ज़रूरी) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="LgM7XwMlO6DVPua_OtQUU1BwNMR4y5cI8YiZZHfDs8" />
@@ -13,10 +14,20 @@
     <title>{% block title %}Rango Shopping | Premium Luxury Fashion Deals & Affiliate Store{% endblock %}</title>
    
     <meta name="description" content="Explore exclusive luxury fashion at Rango Shopping. Get up to 70% off on top premium brands like Zara, H&M, Nike, and Gucci with direct affiliate store links.">
-    <link rel="icon" type="logo/jpeg" href="{{ url_for('static', filename='logo.jpeg') }}">
-    <link rel="canonical" href="https://my-shop-61q8.onrender.com" />
+    
+    <!-- सुधार 2: सोशल मीडिया (WhatsApp, Instagram, FB) पर सुंदर कार्ड दिखाने के लिए Open Graph टैग्स जोड़े -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onrender.com">
+    <meta property="og:title" content="Rango Shopping | Premium Luxury Fashion & Deals">
+    <meta property="og:description" content="Get up to 70% off on top premium brands like Zara, Nike, and Gucci.">
+    <meta property="og:image" content="{{ url_for('static', filename='logo.jpeg') }}">
+
+    <!-- सुधार 3: Favicon के अमान्य (invalid) type="logo/jpeg" को बदलकर type="image/jpeg" किया -->
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo.jpeg') }}">
+    <link rel="canonical" href="https://onrender.com" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head> 
+</head>
+
 <body>
 
 <header class="navbar">
