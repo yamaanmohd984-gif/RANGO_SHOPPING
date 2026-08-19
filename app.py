@@ -115,6 +115,12 @@ def privacy():
 def terms():
     return render_template("terms.html")
 
+@app.route('/about-fabric')
+def about_fabric_page():
+    # यह रूट 'https://onrender.com' पर खुलेगा
+    return render_template('about_fabric.html')
+
+
 # =========================
 # MEN CATEGORY PAGES
 # =========================
