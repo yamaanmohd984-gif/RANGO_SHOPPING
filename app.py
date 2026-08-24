@@ -120,6 +120,25 @@ def about_fabric_page():
     # यह रूट 'https://onrender.com' पर खुलेगा
     return render_template('about_fabric.html')
 
+@app.route('/sitemap.xml')
+def sitemap():
+    # यह कोड सीधे ब्राउज़र या गूगल रोबोट को XML फॉर्मेट में आपकी साइट का नक्शा देगा
+    xml_content = '<?xml version="1.0" encoding="UTF-8"?>'
+    xml_content += '<urlset xmlns="http://sitemaps.org">'
+    
+    # 1. आपके होमपेज का लिंक
+    xml_content += '<url><loc>https://onrender.com</loc><priority>1.0</priority></url>'
+    
+    # 2. आपके नए 100-सेक्शन वाले फैब्रिक गाइड का लिंक
+    xml_content += '<url><loc>https://onrender.comabout-fabric</loc><priority>0.8</priority></url>'
+    
+    xml_content += '</urlset>'
+    
+    return xml_content, 200, {'Content-Type': 'application/xml'}
+
+
+
+
 
 # =========================
 # MEN CATEGORY PAGES
