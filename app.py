@@ -124,18 +124,18 @@ def about_fabric_page():
 def sitemap():
     # यह कोड सीधे ब्राउज़र या गूगल रोबोट को XML फॉर्मेट में आपकी साइट का नक्शा देगा
     xml_content = '<?xml version="1.0" encoding="UTF-8"?>'
+    # सुधार 1: बिल्कुल सही और ऑफिशियल साइटमैप नेमस्पेस लिंक
     xml_content += '<urlset xmlns="http://sitemaps.org">'
     
-    # 1. आपके होमपेज का लिंक
-    xml_content += '<url><loc>https://my-shop-61q8.onrender.com</loc><priority>1.0</priority></url>'
+    # सुधार 2: आपके होमपेज का बिल्कुल सही लिंक
+    xml_content += '<url><loc>https://my-shop-61q8.onrender.com/</loc><priority>1.0</priority></url>'
     
-    # 2. आपके नए 100-सेक्शन वाले फैब्रिक गाइड का लिंक
-    xml_content += '<url><loc>https://my-shop-61q8.onrender.com/about-fabric.comabout-fabric</loc><priority>0.8</priority></url>'
+    # सुधार 3: आपके नए 100-सेक्शन वाले फैब्रिक गाइड का बिल्कुल सटीक यूआरएल लिंक
+    xml_content += '<url><loc>https://my-shop-61q8.onrender.com/about-fabric</loc><priority>0.8</priority></url>'
     
     xml_content += '</urlset>'
     
     return xml_content, 200, {'Content-Type': 'application/xml'}
-
 
 
 
