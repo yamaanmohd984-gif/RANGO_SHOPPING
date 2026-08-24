@@ -127,10 +127,10 @@ def sitemap():
     xml_content += '<urlset xmlns="http://sitemaps.org">'
     
     # 1. आपके होमपेज का लिंक
-    xml_content += '<url><loc>https://onrender.com</loc><priority>1.0</priority></url>'
+    xml_content += '<url><loc>https://my-shop-61q8.onrender.com</loc><priority>1.0</priority></url>'
     
     # 2. आपके नए 100-सेक्शन वाले फैब्रिक गाइड का लिंक
-    xml_content += '<url><loc>https://onrender.comabout-fabric</loc><priority>0.8</priority></url>'
+    xml_content += '<url><loc>https://my-shop-61q8.onrender.com/about-fabric.comabout-fabric</loc><priority>0.8</priority></url>'
     
     xml_content += '</urlset>'
     
