@@ -141,9 +141,6 @@ def tshirts():
 def shirts():
     return render_template("shirts.html")
 
-@app.route("/jeans")
-def jeans():
-    return render_template("jeans.html")
 
 @app.route("/jackets")
 def jackets():
@@ -273,7 +270,7 @@ def sitemap():
     host = request.host_url
     static_urls = [
         "", "about-fabric", "men", "women", "kids", "offers", "wishlist", "about", "contact", "privacy", "terms",
-        "Men-fashion", "lower-fashion", "tshirts", "shirts", "jeans", "jackets", "shoes", "watches", 
+        "Men-fashion", "lower-fashion", "tshirts", "shirts", "jackets", "shoes", "watches", 
         "wallet-belts", "perfumes", "sunglasses", "jewellery", "w-dresses", "w-tops", "w-tshirts", 
         "w-shirts", "w-jeans", "w-jackets", "w-heels", "w-handbags", "w-watches", "w-jewellery", 
         "w-perfumes", "w-sunglasses", "kids-tshirts", "kids-shirts", "kids-jeans", "kids-jackets", 
