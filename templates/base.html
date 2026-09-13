@@ -24,7 +24,9 @@
 
     <!-- सुधार 3: Favicon के अमान्य (invalid) type="logo/jpeg" को बदलकर type="image/jpeg" किया -->
     <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo.jpeg') }}">
+    {% block canonical %}
     <link rel="canonical" href="https://my-shop-61q8.onrender.com/" />
+    {% endblock %}
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-27TCMLB29S"></script>
